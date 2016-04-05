@@ -13,6 +13,19 @@ import FBSDKLoginKit
 
 class UserViewModel: NSObject {
     
+    static func isAnyUserLogged() -> Bool{
+        
+        let realm = try! Realm()
+        
+        let user = realm.objects(User).filter("isLogged == true")
+        if user.count >= 1{
+            return true
+        }
+        
+        return false
+    }
+    
+    
     static func deleteUserFromRealm(user: User) -> Void {
         let realm = try! Realm()
         try! realm.write {
@@ -27,6 +40,14 @@ class UserViewModel: NSObject {
         try! realm.write({
             realm.add(user)
             FBSDKLoginManager().logOut()
+        })
+    }
+    
+    static func updateLoginState(user: User, isUserLogged: Bool) -> Void {
+        let realm = try! Realm()
+        
+        try! realm.write({ 
+            user.isLogged = isUserLogged
         })
     }
 

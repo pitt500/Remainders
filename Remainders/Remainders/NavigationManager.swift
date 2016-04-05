@@ -11,18 +11,6 @@ import RealmSwift
 
 class NavigationManager: NSObject {
     
-    static func isAnyUserLogged() -> Bool{
-
-        let realm = try! Realm()
-        
-        let user = realm.objects(User).filter("isLogged == true")
-        if user.count >= 1{
-            return true
-        }
-        
-        return false
-    }
-    
     static func goToStoryboard(storyboardName: String, viewControllerId: String) -> Void{
         let app = UIApplication.sharedApplication().delegate!
         

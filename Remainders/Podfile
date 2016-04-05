@@ -4,3 +4,7 @@ use_frameworks!
 
 pod 'ObjectMapper', '~> 1.2'
 pod 'RealmSwift', '~> 0.98'
+pod 'Bolts'
+pod 'FBSDKCoreKit'
+pod 'FBSDKShareKit'
+pod 'FBSDKLoginKit'

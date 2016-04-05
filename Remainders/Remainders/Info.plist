@@ -49,5 +49,9 @@
     <string>1745029865716215</string>
     <key>FacebookDisplayName</key>
     <string>Remainders</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbauth2</string>
+    </array>
 </dict>
 </plist>

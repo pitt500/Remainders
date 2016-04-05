@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var loginLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,7 +22,24 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func loginButtonClicked() -> Void {
+        let login: FBSDKLoginManager = FBSDKLoginManager()
+        login.logInWithReadPermissions(["public_profile","email"], fromViewController: self) { (result, error) in
+            if error != nil{
+                print("Process error")
+            }else if result.isCancelled {
+                print("Cancelled")
+            }else{
+                print("Logged in")
+                self.loginLabel.text = "Logged in!"
+            }
+        }
+    }
 
 
+    @IBAction func loginToFacebook(sender: AnyObject) {
+        self.loginButtonClicked()
+    }
 }
 

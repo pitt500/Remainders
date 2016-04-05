@@ -16,8 +16,36 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="320-sn-T9g">
+                                <rect key="frame" x="277" y="285" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="loginToFacebook:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c1d-Pa-PN3"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wp3-EN-b4i">
+                                <rect key="frame" x="260" y="343" width="81" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="3Eo-bY-UAa"/>
+                                    <constraint firstAttribute="width" constant="81" id="RNe-Lc-VQ5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wp3-EN-b4i" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6j1-Kk-8OM"/>
+                            <constraint firstItem="320-sn-T9g" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Plp-NM-aQN"/>
+                            <constraint firstItem="320-sn-T9g" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e5z-IL-cHT"/>
+                            <constraint firstItem="wp3-EN-b4i" firstAttribute="top" secondItem="320-sn-T9g" secondAttribute="bottom" constant="28" id="xgy-9R-X59"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginLabel" destination="wp3-EN-b4i" id="zie-k5-PfO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

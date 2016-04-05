@@ -13,4 +13,20 @@ class User: Object {
     var tokenId: String = ""
     var email: String = ""
     var name: String = ""
+    var isLogged: Bool = false
+    
+    init(WithName name: String, email: String, tokenId: String) {
+        super.init()
+        self.name = name
+        self.email = email
+        self.tokenId = tokenId
+    }
+    
+    required init() {
+        super.init()
+    }
+    
+
+    
+    
 }

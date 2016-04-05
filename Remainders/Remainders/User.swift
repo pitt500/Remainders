@@ -13,7 +13,7 @@ class User: Object {
     var tokenId: String = ""
     var email: String = ""
     var name: String = ""
-    var isLogged: Bool = false
+    var isLogged: Bool = true
     
     init(WithName name: String, email: String, tokenId: String) {
         super.init()

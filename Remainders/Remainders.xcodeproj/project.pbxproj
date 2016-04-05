@@ -17,6 +17,7 @@
 		B59E1DA41CB4476E00664399 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59E1DA31CB4476E00664399 /* User.swift */; };
 		B59E1DA71CB449BD00664399 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59E1DA61CB449BD00664399 /* NavigationManager.swift */; };
 		B59E1DA91CB44B5500664399 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59E1DA81CB44B5500664399 /* MainViewController.swift */; };
+		B59E1DAC1CB4824B00664399 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59E1DAB1CB4824B00664399 /* UserViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		B59E1DA31CB4476E00664399 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B59E1DA61CB449BD00664399 /* NavigationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		B59E1DA81CB44B5500664399 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B59E1DAB1CB4824B00664399 /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		B510504E1CB4242600916BEF /* Remainders */ = {
 			isa = PBXGroup;
 			children = (
+				B59E1DAA1CB4823600664399 /* Business */,
 				B59E1DA51CB4499C00664399 /* Managers */,
 				B59E1DA21CB446E600664399 /* Models */,
 				B59E1DA11CB446DE00664399 /* Controllers */,
@@ -129,6 +132,14 @@
 				B59E1DA61CB449BD00664399 /* NavigationManager.swift */,
 			);
 			name = Managers;
+			sourceTree = "<group>";
+		};
+		B59E1DAA1CB4823600664399 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				B59E1DAB1CB4824B00664399 /* UserViewModel.swift */,
+			);
+			name = Business;
 			sourceTree = "<group>";
 		};
 		F946DF6994BBCAA1CE55CD41 /* Pods */ = {
@@ -265,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B51050521CB4242600916BEF /* LoginViewController.swift in Sources */,
+				B59E1DAC1CB4824B00664399 /* UserViewModel.swift in Sources */,
 				B59E1DA71CB449BD00664399 /* NavigationManager.swift in Sources */,
 				B51050501CB4242600916BEF /* AppDelegate.swift in Sources */,
 				B59E1DA41CB4476E00664399 /* User.swift in Sources */,

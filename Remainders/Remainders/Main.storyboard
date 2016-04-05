@@ -23,11 +23,20 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZ4-SA-vyL">
+                                <rect key="frame" x="274" y="328" width="52" height="30"/>
+                                <state key="normal" title="Log out"/>
+                                <connections>
+                                    <action selector="LogOut:" destination="7Xw-pe-Cjc" eventType="touchUpInside" id="JV8-ME-jAH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="B3h-Sb-3TE" firstAttribute="centerX" secondItem="T0M-mZ-Qxz" secondAttribute="centerX" id="IE6-dt-Z05"/>
+                            <constraint firstItem="aZ4-SA-vyL" firstAttribute="top" secondItem="B3h-Sb-3TE" secondAttribute="bottom" constant="18" id="Ohb-JB-c4o"/>
                             <constraint firstItem="B3h-Sb-3TE" firstAttribute="centerY" secondItem="T0M-mZ-Qxz" secondAttribute="centerY" id="TBf-Za-Ees"/>
+                            <constraint firstItem="aZ4-SA-vyL" firstAttribute="centerX" secondItem="T0M-mZ-Qxz" secondAttribute="centerX" id="Uec-6O-FEI"/>
                         </constraints>
                     </view>
                 </viewController>

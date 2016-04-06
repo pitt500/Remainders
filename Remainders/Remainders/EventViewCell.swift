@@ -10,9 +10,14 @@ import UIKit
 
 class EventViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var calendarView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.calendarView.layer.borderWidth = 1
+        self.calendarView.layer.borderColor = UIColor.blackColor().CGColor
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

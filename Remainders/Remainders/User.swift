@@ -10,23 +10,19 @@ import UIKit
 import RealmSwift
 
 class User: Object {
-    var tokenId: String = ""
-    var email: String = ""
-    var name: String = ""
-    var isLogged: Bool = true
+    dynamic var email: String = ""
+    dynamic var name: String = ""
+    dynamic var isLogged: Bool = true
     
-    init(WithName name: String, email: String, tokenId: String) {
-        super.init()
+    convenience init(WithName name: String, email: String) {
+        self.init()
         self.name = name
         self.email = email
-        self.tokenId = tokenId
     }
     
-    required init() {
-        super.init()
+    override static func primaryKey() -> String? {
+        return "email"
     }
-    
-
     
     
 }

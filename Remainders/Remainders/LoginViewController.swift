@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
                     UserViewModel.saveUserIntoRealm(User(WithName: dictionary["name"]!, email: dictionary["email"]!))
                 }
                 
-                NavigationManager.goToStoryboard("Main", viewControllerId: "MainViewController")
+                NavigationManager.goToStoryboard("Main", viewControllerId: "MainController")
             }else{
                 print("Error getting facebook data...")
             }

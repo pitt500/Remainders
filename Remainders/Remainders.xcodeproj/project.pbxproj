@@ -21,6 +21,7 @@
 		B5CEA9661CB5B4DE00E57EF3 /* EventViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEA9651CB5B4DE00E57EF3 /* EventViewCell.swift */; };
 		B5CEA9681CB5B69C00E57EF3 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEA9671CB5B69C00E57EF3 /* EventViewController.swift */; };
 		B5CEA96A1CB5BE7000E57EF3 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEA9691CB5BE7000E57EF3 /* AddEventViewController.swift */; };
+		B5CEA96E1CB5C9EC00E57EF3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEA96D1CB5C9EC00E57EF3 /* Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		B5CEA9651CB5B4DE00E57EF3 /* EventViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewCell.swift; sourceTree = "<group>"; };
 		B5CEA9671CB5B69C00E57EF3 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		B5CEA9691CB5BE7000E57EF3 /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
+		B5CEA96D1CB5C9EC00E57EF3 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				B59E1DA31CB4476E00664399 /* User.swift */,
+				B5CEA96D1CB5C9EC00E57EF3 /* Event.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				B59E1DAC1CB4824B00664399 /* UserViewModel.swift in Sources */,
 				B59E1DA71CB449BD00664399 /* NavigationManager.swift in Sources */,
 				B5CEA9661CB5B4DE00E57EF3 /* EventViewCell.swift in Sources */,
+				B5CEA96E1CB5C9EC00E57EF3 /* Event.swift in Sources */,
 				B51050501CB4242600916BEF /* AppDelegate.swift in Sources */,
 				B5CEA9681CB5B69C00E57EF3 /* EventViewController.swift in Sources */,
 				B59E1DA41CB4476E00664399 /* User.swift in Sources */,

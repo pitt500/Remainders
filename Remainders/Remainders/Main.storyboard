@@ -164,10 +164,10 @@
             </objects>
             <point key="canvasLocation" x="2508" y="130"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Event View Controller-->
         <scene sceneID="8Uw-JQ-3ih">
             <objects>
-                <viewController id="vSC-AL-8pS" sceneMemberID="viewController">
+                <viewController id="vSC-AL-8pS" customClass="AddEventViewController" customModule="Remainders" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eO3-oF-x4x"/>
                         <viewControllerLayoutGuide type="bottom" id="obf-mK-eBh"/>
@@ -195,6 +195,9 @@
                                 <rect key="frame" x="20" y="7" width="133" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closeView:" destination="vSC-AL-8pS" eventType="touchUpInside" id="OT7-tO-b6U"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="AHI-tR-0ay">

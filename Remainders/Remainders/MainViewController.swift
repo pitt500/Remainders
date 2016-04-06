@@ -7,18 +7,32 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class MainViewController: UIViewController {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    var user: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.user = UserViewModel.getLoggedUser()
+        nameLabel.text = user.name
+        print("Name: "+user.name)
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @IBAction func LogOut(sender: AnyObject) {
+        UserViewModel.updateLoginState(self.user, isUserLogged: false)
+        NavigationManager.goToStoryboard("Welcome", viewControllerId: "LoginViewController")
     }
     
 

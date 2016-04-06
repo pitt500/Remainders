@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         if UserViewModel.isAnyUserLogged(){
-            NavigationManager.goToStoryboard("Main", viewControllerId: "MainViewController")
+            NavigationManager.goToStoryboard("Main", viewControllerId: "MainController")
         }else{
             NavigationManager.goToStoryboard("Welcome", viewControllerId: "LoginViewController")
         }

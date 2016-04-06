@@ -30,15 +30,30 @@
                                     <action selector="LogOut:" destination="7Xw-pe-Cjc" eventType="touchUpInside" id="JV8-ME-jAH"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2L-lW-cjY">
+                                <rect key="frame" x="20" y="122" width="560" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="560" id="S5o-CX-cm9"/>
+                                    <constraint firstAttribute="height" constant="43" id="ctO-gI-Nlf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="W2L-lW-cjY" firstAttribute="top" secondItem="cwS-am-JEV" secondAttribute="bottom" constant="102" id="6p3-B4-ZfV"/>
                             <constraint firstItem="B3h-Sb-3TE" firstAttribute="centerX" secondItem="T0M-mZ-Qxz" secondAttribute="centerX" id="IE6-dt-Z05"/>
                             <constraint firstItem="aZ4-SA-vyL" firstAttribute="top" secondItem="B3h-Sb-3TE" secondAttribute="bottom" constant="18" id="Ohb-JB-c4o"/>
                             <constraint firstItem="B3h-Sb-3TE" firstAttribute="centerY" secondItem="T0M-mZ-Qxz" secondAttribute="centerY" id="TBf-Za-Ees"/>
                             <constraint firstItem="aZ4-SA-vyL" firstAttribute="centerX" secondItem="T0M-mZ-Qxz" secondAttribute="centerX" id="Uec-6O-FEI"/>
+                            <constraint firstItem="W2L-lW-cjY" firstAttribute="centerX" secondItem="T0M-mZ-Qxz" secondAttribute="centerX" id="ZUk-ze-wgN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="W2L-lW-cjY" id="wyU-zg-7lJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9zr-Xi-bPt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

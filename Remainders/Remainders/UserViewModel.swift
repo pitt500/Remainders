@@ -25,6 +25,12 @@ class UserViewModel: NSObject {
         return false
     }
     
+    static func getLoggedUser() -> User{
+        let realm = try! Realm()
+        let user = realm.objects(User).filter("isLogged == true").first
+        return user!
+    }
+    
     
     static func deleteUserFromRealm(user: User) -> Void {
         let realm = try! Realm()

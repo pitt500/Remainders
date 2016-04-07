@@ -13,6 +13,7 @@ class User: Object {
     dynamic var email: String = ""
     dynamic var name: String = ""
     dynamic var isLogged: Bool = true
+    var events = List<Event>()
     
     convenience init(WithName name: String, email: String) {
         self.init()

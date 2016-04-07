@@ -10,6 +10,11 @@ import UIKit
 
 class AddEventViewController: UITableViewController {
 
+    
+    @IBOutlet weak var titleLabel: UITextField!
+    @IBOutlet weak var eventDatePicker: UIDatePicker!
+    @IBOutlet weak var descriptionLabel: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +31,14 @@ class AddEventViewController: UITableViewController {
     }
 
     @IBAction func closeModal(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func saveEvent(sender: AnyObject) {
+
+        let event = Event(WithTitle: titleLabel.text!, date: eventDatePicker.date, note: descriptionLabel.text!)
+        EventViewModel.saveEventIntoRealm(event)
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     // MARK: - Table view data source

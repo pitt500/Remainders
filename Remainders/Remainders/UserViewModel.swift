@@ -77,7 +77,12 @@ class UserViewModel: NSObject {
     
     static func saveUserEventIntoRealm(event: Event) -> Void{        
         let loggedUser = getLoggedUser()
-        loggedUser.events.append(event)
+        
+        let realm = try! Realm()
+        
+        try! realm.write({
+            loggedUser.events.append(event)
+        })
     }
     
     static func updateLoginState(user: User, isUserLogged: Bool) -> Void {

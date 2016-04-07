@@ -7,7 +7,18 @@
 //
 
 import UIKit
+import RealmSwift
 
-class Event: NSObject {
 
+class Event: Object {
+    dynamic var title: String = ""
+    dynamic var date: NSDate = NSDate()
+    dynamic var note: String = ""
+    
+    convenience init(WithTitle title: String, date: NSDate, note: String) {
+        self.init()
+        self.title = title
+        self.date = date
+        self.note = note
+    }
 }

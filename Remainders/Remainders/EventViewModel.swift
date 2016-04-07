@@ -16,7 +16,10 @@ class EventViewModel: NSObject {
         
         try! realm.write({
             realm.add(event)
-            UserViewModel.saveUserEventIntoRealm(event)
         })
+    }
+    
+    static func getEventsForUser(user: User) -> [Event] {
+        return Array(user.events)
     }
 }

@@ -9,6 +9,8 @@
 import UIKit
 
 class EventViewController: UITableViewController {
+    
+    var events: [Event]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +20,9 @@ class EventViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        
+        self.events = EventViewModel.getEventsForUser(UserViewModel.getLoggedUser())
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,15 +39,15 @@ class EventViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return self.events.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+        let cell: EventViewCell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as! EventViewCell
+        
+        cell.configureCellWithEvent(self.events[indexPath.row])
+        
         return cell
     }
 

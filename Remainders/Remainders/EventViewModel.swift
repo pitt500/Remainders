@@ -7,7 +7,16 @@
 //
 
 import UIKit
+import RealmSwift
 
 class EventViewModel: NSObject {
 
+    static func saveEventIntoRealm(event: Event) -> Void {
+        let realm = try! Realm()
+        
+        try! realm.write({
+            realm.add(event)
+            UserViewModel.saveUserEventIntoRealm(event)
+        })
+    }
 }

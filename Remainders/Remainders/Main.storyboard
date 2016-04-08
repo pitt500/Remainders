@@ -313,33 +313,45 @@
                                     <constraint firstAttribute="height" constant="1" id="RN8-hM-hN7"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kXy-Ha-apS">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kXy-Ha-apS">
                                 <rect key="frame" x="20" y="153" width="560" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="7eL-Ve-D2P"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5fH-oR-0uM">
-                                <rect key="frame" x="20" y="162" width="560" height="376"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pl4-bf-Yjf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pl4-bf-Yjf">
                                 <rect key="frame" x="20" y="110" width="560" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="fJT-4v-CRz"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUK-Pf-vHQ">
+                                <rect key="frame" x="20" y="491" width="560" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="l0l-0k-zHh"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="1" green="0.2229907991" blue="0.2970356502" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5fH-oR-0uM">
+                                <rect key="frame" x="20" y="162" width="560" height="321"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kXy-Ha-apS" firstAttribute="leading" secondItem="Pl4-bf-Yjf" secondAttribute="leading" id="0Ov-HE-REI"/>
+                            <constraint firstItem="MjO-lg-SxB" firstAttribute="top" secondItem="hUK-Pf-vHQ" secondAttribute="bottom" constant="8" id="0cX-AQ-PuH"/>
                             <constraint firstAttribute="trailing" secondItem="h5Z-1Z-8d5" secondAttribute="trailing" constant="20" id="5dm-gR-hW4"/>
                             <constraint firstItem="5fH-oR-0uM" firstAttribute="top" secondItem="kXy-Ha-apS" secondAttribute="bottom" constant="8" id="6Ty-2u-T4k"/>
                             <constraint firstItem="h5Z-1Z-8d5" firstAttribute="leading" secondItem="nok-Bm-W4n" secondAttribute="leading" constant="20" id="78D-8q-bSf"/>
-                            <constraint firstItem="MjO-lg-SxB" firstAttribute="top" secondItem="5fH-oR-0uM" secondAttribute="bottom" constant="13" id="8Pc-gD-OTP"/>
                             <constraint firstItem="Pl4-bf-Yjf" firstAttribute="leading" secondItem="h5Z-1Z-8d5" secondAttribute="leading" id="CRx-fh-oQw"/>
                             <constraint firstAttribute="trailing" secondItem="5fH-oR-0uM" secondAttribute="trailing" constant="20" id="DNj-kd-Zyn"/>
                             <constraint firstItem="9JQ-Km-OtW" firstAttribute="trailing" secondItem="h5Z-1Z-8d5" secondAttribute="trailing" id="NHE-l5-Dis"/>
@@ -351,8 +363,11 @@
                             <constraint firstItem="kXy-Ha-apS" firstAttribute="top" secondItem="Pl4-bf-Yjf" secondAttribute="bottom" constant="8" id="UoF-74-Uxg"/>
                             <constraint firstItem="5fH-oR-0uM" firstAttribute="leading" secondItem="h5Z-1Z-8d5" secondAttribute="leading" id="WPn-yf-4A1"/>
                             <constraint firstItem="Pl4-bf-Yjf" firstAttribute="top" secondItem="9JQ-Km-OtW" secondAttribute="bottom" constant="8" id="Y8j-Is-dhv"/>
+                            <constraint firstAttribute="trailing" secondItem="hUK-Pf-vHQ" secondAttribute="trailing" constant="20" id="bCd-02-a7Z"/>
+                            <constraint firstItem="hUK-Pf-vHQ" firstAttribute="top" secondItem="5fH-oR-0uM" secondAttribute="bottom" constant="8" id="jVO-9a-kiF"/>
                             <constraint firstItem="9JQ-Km-OtW" firstAttribute="trailing" secondItem="kXy-Ha-apS" secondAttribute="trailing" id="lCT-hU-WEg"/>
                             <constraint firstItem="5fH-oR-0uM" firstAttribute="leading" secondItem="nok-Bm-W4n" secondAttribute="leading" constant="20" id="lY8-hq-T2s"/>
+                            <constraint firstItem="hUK-Pf-vHQ" firstAttribute="leading" secondItem="nok-Bm-W4n" secondAttribute="leading" constant="20" id="rxT-Kn-LmZ"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -360,6 +375,11 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="eventDateLabel" destination="Pl4-bf-Yjf" id="ft7-x8-a1r"/>
+                        <outlet property="eventDescriptionLabel" destination="5fH-oR-0uM" id="cqx-aO-v95"/>
+                        <outlet property="eventTitleLabel" destination="h5Z-1Z-8d5" id="h7v-b2-8Th"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NHB-rs-QLc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

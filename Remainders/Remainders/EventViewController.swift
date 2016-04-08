@@ -32,9 +32,9 @@ class EventViewController: UITableViewController {
             else{ return }
         
         if tabTitle == "Upcoming" {
-            self.events = EventViewModel.getEventsForUser(UserViewModel.getLoggedUser(), dateComparison: DateComparison.BeforeToday)
-        }else{
             self.events = EventViewModel.getEventsForUser(UserViewModel.getLoggedUser(), dateComparison: DateComparison.AfterToday)
+        }else{
+            self.events = EventViewModel.getEventsForUser(UserViewModel.getLoggedUser(), dateComparison: DateComparison.BeforeToday)
         }
         
         self.tableView.reloadData()

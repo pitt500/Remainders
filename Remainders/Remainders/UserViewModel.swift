@@ -35,6 +35,8 @@ class UserViewModel: NSObject {
         Realm.Configuration.defaultConfiguration = config
     }
     
+    
+    
     static func isAnyUserLogged() -> Bool{
         
         let realm = try! Realm()

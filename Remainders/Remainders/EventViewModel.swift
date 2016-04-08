@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Timepiece
 
 class EventViewModel: NSObject {
 

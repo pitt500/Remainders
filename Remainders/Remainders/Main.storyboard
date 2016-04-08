@@ -263,7 +263,7 @@
                                     <outlet property="dayLabel" destination="VE6-hT-0Px" id="YXW-Ge-WG3"/>
                                     <outlet property="monthLabel" destination="gPm-uc-LiV" id="aBy-N3-4T9"/>
                                     <outlet property="titleLabel" destination="eoW-BB-3FF" id="uyg-xS-DaX"/>
-                                    <segue destination="39j-Pf-acd" kind="show" id="Slj-8p-Vw2"/>
+                                    <segue destination="39j-Pf-acd" kind="show" identifier="segueEventDetail" id="Slj-8p-Vw2"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

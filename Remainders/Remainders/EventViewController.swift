@@ -22,7 +22,13 @@ class EventViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.events = EventViewModel.getEventsForUser(UserViewModel.getLoggedUser())
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,11 +98,15 @@ class EventViewController: UITableViewController {
 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let detailVC = segue.destinationViewController as! EventDetailViewController
         
-        let cell = sender as! EventViewCell
-        let selectedIndexPath = self.tableView.indexPathForCell(cell)
-        detailVC.event =  self.events[(selectedIndexPath?.row)!]
+        if segue.identifier == "segueEventDetail" {
+            let detailVC = segue.destinationViewController as! EventDetailViewController
+            let cell = sender as! EventViewCell
+            let selectedIndexPath = self.tableView.indexPathForCell(cell)
+            detailVC.event =  self.events[(selectedIndexPath?.row)!]
+        }
+        
+        
         
     }
     

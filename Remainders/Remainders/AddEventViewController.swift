@@ -12,7 +12,7 @@ class AddEventViewController: UITableViewController {
     
     @IBOutlet weak var titleLabel: UITextField!
     @IBOutlet weak var eventDatePicker: UIDatePicker!
-    @IBOutlet weak var descriptionLabel: UITextField!
+    @IBOutlet weak var notesArea: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class AddEventViewController: UITableViewController {
     
     @IBAction func saveEvent(sender: AnyObject) {
 
-        let event = Event(WithTitle: titleLabel.text!, date: eventDatePicker.date, note: descriptionLabel.text!)
+        let event = Event(WithTitle: titleLabel.text!, date: eventDatePicker.date, note: notesArea.text!)
         EventViewModel.saveEventIntoRealm(event)
         UserViewModel.saveUserEventIntoRealm(event)
         

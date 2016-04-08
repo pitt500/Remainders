@@ -12,15 +12,24 @@ import FBSDKLoginKit
 class AccountViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var upcomingEventsLabel: UILabel!
     var user: User!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Do any additional selabeltup after loading the view.
         self.user = UserViewModel.getLoggedUser()
         nameLabel.text = user.name
-        print("Name: "+user.name)
+        emailLabel.text = user.email
+        upcomingEventsLabel.text = String(EventViewModel.getEventsForUser(user, dateComparison: DateComparison.AfterToday).count)
+        
+        
+        let url = NSURL(string: "https://graph.facebook.com/\(user.tokenId)/picture?type=large")
+        let data = NSData(contentsOfURL: url!)
+        profileImageView.image = UIImage(data: data!)
         
     }
 

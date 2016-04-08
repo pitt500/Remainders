@@ -9,7 +9,7 @@
 import UIKit
 import FBSDKLoginKit
 
-class MainViewController: UIViewController {
+class AccountViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     var user: User!

@@ -27,7 +27,16 @@ class EventViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.events = EventViewModel.getEventsForUser(UserViewModel.getLoggedUser())
+        
+        guard let tabTitle: String = self.navigationController?.tabBarItem.title
+            else{ return }
+        
+        if tabTitle == "Upcoming" {
+            self.events = EventViewModel.getEventsForUser(UserViewModel.getLoggedUser(), dateComparison: DateComparison.BeforeToday)
+        }else{
+            self.events = EventViewModel.getEventsForUser(UserViewModel.getLoggedUser(), dateComparison: DateComparison.AfterToday)
+        }
+        
         self.tableView.reloadData()
     }
 

@@ -46,7 +46,7 @@ class LoginViewController: UIViewController {
                 if let user = UserViewModel.getUserWithEmail(dictionary["email"]!){
                     UserViewModel.updateLoginState(user, isUserLogged: true)
                 }else{
-                    UserViewModel.saveUserIntoRealm(User(WithName: dictionary["name"]!, email: dictionary["email"]!))
+                    UserViewModel.saveUserIntoRealm(User(WithName: dictionary["name"]!, email: dictionary["email"]!, tokenId: dictionary["id"]!))
                 }
                 
                 NavigationManager.goToStoryboard("Main", viewControllerId: "MainController")

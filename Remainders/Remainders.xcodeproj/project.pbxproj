@@ -24,6 +24,7 @@
 		B5CEA9721CB6D9EA00E57EF3 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEA9711CB6D9EA00E57EF3 /* EventViewModel.swift */; };
 		B5CEA9741CB6E43700E57EF3 /* EventViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEA9731CB6E43700E57EF3 /* EventViewCell.swift */; };
 		B5CEA9771CB7157400E57EF3 /* NSCalendar+DateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEA9761CB7157400E57EF3 /* NSCalendar+DateComponents.swift */; };
+		B5CEA97B1CB725D300E57EF3 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEA97A1CB725D300E57EF3 /* EventDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		B5CEA9711CB6D9EA00E57EF3 /* EventViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		B5CEA9731CB6E43700E57EF3 /* EventViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewCell.swift; sourceTree = "<group>"; };
 		B5CEA9761CB7157400E57EF3 /* NSCalendar+DateComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalendar+DateComponents.swift"; sourceTree = "<group>"; };
+		B5CEA97A1CB725D300E57EF3 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				B5CEA9671CB5B69C00E57EF3 /* EventViewController.swift */,
 				B5CEA96F1CB629A300E57EF3 /* AddEventViewController.swift */,
 				B5CEA9731CB6E43700E57EF3 /* EventViewCell.swift */,
+				B5CEA97A1CB725D300E57EF3 /* EventDetailViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				B51050521CB4242600916BEF /* LoginViewController.swift in Sources */,
 				B5CEA9701CB629A300E57EF3 /* AddEventViewController.swift in Sources */,
 				B59E1DAC1CB4824B00664399 /* UserViewModel.swift in Sources */,
+				B5CEA97B1CB725D300E57EF3 /* EventDetailViewController.swift in Sources */,
 				B5CEA9721CB6D9EA00E57EF3 /* EventViewModel.swift in Sources */,
 				B5CEA9771CB7157400E57EF3 /* NSCalendar+DateComponents.swift in Sources */,
 				B59E1DA71CB449BD00664399 /* NavigationManager.swift in Sources */,

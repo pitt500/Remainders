@@ -25,4 +25,12 @@ extension NSCalendar {
         let components = calendar.components([.Day , .Month , .Year], fromDate: date)
         return String(components.day)
     }
+
+}
+
+public enum DateComparison : Int {
+    
+    case BeforeToday
+    case Today
+    case AfterToday
 }

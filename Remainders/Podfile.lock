@@ -18,6 +18,7 @@ PODS:
   - Realm/Headers (0.98.6)
   - RealmSwift (0.98.6):
     - Realm (= 0.98.6)
+  - Timepiece (0.4.2)
 
 DEPENDENCIES:
   - FBSDKCoreKit
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - LKAlertController (~> 1.7)
   - ObjectMapper (~> 1.2)
   - RealmSwift (~> 0.98)
+  - Timepiece (~> 0.4)
 
 SPEC CHECKSUMS:
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
@@ -36,5 +38,6 @@ SPEC CHECKSUMS:
   ObjectMapper: b1e9c7c8a9f6400b72690c80072c131504caa66f
   Realm: 44803f35418c5d89b27825a564247fcd190de37e
   RealmSwift: c7239c52c83f8c43525a5269ba7be1694da33afc
+  Timepiece: cf53bb908bf542acc0e3d5f69cabfed869df4ebd
 
 COCOAPODS: 0.39.0

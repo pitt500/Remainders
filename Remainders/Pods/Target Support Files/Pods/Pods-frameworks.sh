@@ -92,6 +92,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/ObjectMapper.framework"
   install_framework "Pods/Realm.framework"
   install_framework "Pods/RealmSwift.framework"
+  install_framework "Pods/Timepiece.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Bolts.framework"
@@ -102,4 +103,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/ObjectMapper.framework"
   install_framework "Pods/Realm.framework"
   install_framework "Pods/RealmSwift.framework"
+  install_framework "Pods/Timepiece.framework"
 fi

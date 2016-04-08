@@ -8,6 +8,7 @@
 
 import UIKit
 import LKAlertController
+import Timepiece
 
 class EventDetailViewController: UIViewController {
     
@@ -48,7 +49,7 @@ class EventDetailViewController: UIViewController {
     
     private func setLabelsWithCurrentEvent() -> Void {
         eventTitleLabel.text = self.event.title
-        eventDateLabel.text = String(self.event.date)
+        eventDateLabel.text = self.event.date.stringFromFormat("dd/MMM/yyyy hh:mm a")
         eventDescriptionLabel.text = self.event.note
     }
 

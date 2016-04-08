@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LKAlertController
 
 class EventDetailViewController: UIViewController {
     
@@ -36,6 +37,14 @@ class EventDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func deleteEvent(sender: AnyObject) {
+        Alert(title: "Confirm", message: "Do you want to delete this event?")
+            .addAction("Cancel")
+            .addAction("Delete", style: .Destructive, handler: { _ in
+                EventViewModel.deleteEvent(self.event)
+                self.navigationController?.popToRootViewControllerAnimated(true)
+            }).show()
+    }
     
     private func setLabelsWithCurrentEvent() -> Void {
         eventTitleLabel.text = self.event.title

@@ -32,4 +32,12 @@ class EventViewModel: NSObject {
         //dateComparison == .Today
         return eventArray.filter({ $0.date == today }).sort({ $0.date > $1.date })
     }
+    
+    static func deleteEvent(event: Event){
+        let realm = try! Realm()
+        
+        try! realm.write({
+            realm.delete(event)
+        })
+    }
 }

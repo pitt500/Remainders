@@ -130,16 +130,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type the event title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jtc-Vs-hRy">
-                                                    <rect key="frame" x="8" y="0.0" width="584" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="Jtc-Vs-hRy" secondAttribute="bottom" id="LwR-5X-NgA"/>
-                                                <constraint firstAttribute="trailing" secondItem="Jtc-Vs-hRy" secondAttribute="trailing" constant="8" id="kyo-qJ-qmC"/>
+                                                <constraint firstAttribute="trailing" secondItem="Jtc-Vs-hRy" secondAttribute="trailing" id="kyo-qJ-qmC"/>
                                                 <constraint firstItem="Jtc-Vs-hRy" firstAttribute="top" secondItem="ycx-mH-ySD" secondAttribute="top" id="oPt-7i-CLx"/>
-                                                <constraint firstItem="Jtc-Vs-hRy" firstAttribute="leading" secondItem="ycx-mH-ySD" secondAttribute="leading" constant="8" id="xJN-Hn-Gf3"/>
+                                                <constraint firstItem="Jtc-Vs-hRy" firstAttribute="leading" secondItem="ycx-mH-ySD" secondAttribute="leading" id="xJN-Hn-Gf3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -182,17 +182,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wVM-P4-0fF">
-                                                    <rect key="frame" x="8" y="8" width="584" height="124"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="140"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="wVM-P4-0fF" secondAttribute="bottom" constant="8" id="NhY-0l-JvX"/>
-                                                <constraint firstAttribute="trailing" secondItem="wVM-P4-0fF" secondAttribute="trailing" constant="8" id="WIk-u0-qni"/>
-                                                <constraint firstItem="wVM-P4-0fF" firstAttribute="leading" secondItem="Php-jq-61W" secondAttribute="leading" constant="8" id="bdm-XH-VJ8"/>
-                                                <constraint firstItem="wVM-P4-0fF" firstAttribute="top" secondItem="Php-jq-61W" secondAttribute="top" constant="8" id="gjj-iC-Iq1"/>
+                                                <constraint firstItem="wVM-P4-0fF" firstAttribute="leading" secondItem="Php-jq-61W" secondAttribute="leading" id="AIi-AF-WP4"/>
+                                                <constraint firstItem="wVM-P4-0fF" firstAttribute="top" secondItem="Php-jq-61W" secondAttribute="top" id="Cjl-OS-M3k"/>
+                                                <constraint firstAttribute="trailing" secondItem="wVM-P4-0fF" secondAttribute="trailing" id="g85-hg-yuf"/>
+                                                <constraint firstAttribute="bottom" secondItem="wVM-P4-0fF" secondAttribute="bottom" id="y3D-5k-E7S"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -234,7 +234,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sfp-69-okI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5906" y="75"/>
+            <point key="canvasLocation" x="5050" y="137"/>
         </scene>
         <!--Event View Controller-->
         <scene sceneID="JKj-vG-39r">
@@ -532,7 +532,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Qgk-20-xUc">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cTR-Ig-b5M" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xty-bd-O1q" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hZt-P8-EmW">
@@ -544,8 +543,9 @@
                         <segue destination="1Ak-KR-xxk" kind="relationship" relationship="rootViewController" id="fbe-rb-Ojh"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cTR-Ig-b5M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5192" y="75"/>
+            <point key="canvasLocation" x="4326" y="137"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

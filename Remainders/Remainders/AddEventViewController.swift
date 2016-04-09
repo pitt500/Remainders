@@ -8,20 +8,27 @@
 
 import UIKit
 
+protocol EditEventDetailDelegate {
+    func editEventDetailDidUpdateEvent(controller: AddEventViewController) -> Void
+}
+
 class AddEventViewController: UITableViewController {
     
     @IBOutlet weak var titleLabel: UITextField!
     @IBOutlet weak var eventDatePicker: UIDatePicker!
     @IBOutlet weak var notesArea: UITextView!
     
+    var event: Event?
+    var delegate: EditEventDetailDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        if event != nil {
+            titleLabel.text = event?.title
+            eventDatePicker.date = (event?.date)!
+            notesArea.text = event?.note
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,9 +42,17 @@ class AddEventViewController: UITableViewController {
     
     @IBAction func saveEvent(sender: AnyObject) {
 
-        let event = Event(WithTitle: titleLabel.text!, date: eventDatePicker.date, note: notesArea.text!)
-        EventViewModel.saveEventIntoRealm(event)
-        UserViewModel.saveUserEventIntoRealm(event)
+        if event == nil {
+            //Save new event
+            let event = Event(WithTitle: titleLabel.text!, date: eventDatePicker.date, note: notesArea.text!)
+            EventViewModel.saveEventIntoRealm(event)
+            UserViewModel.saveUserEventIntoRealm(event)
+        }else{
+            //Edit current event
+            EventViewModel.updateEvent(event!, title: titleLabel.text!, date: eventDatePicker.date, notes: notesArea.text!)
+            delegate?.editEventDetailDidUpdateEvent(self)
+        }
+        
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }

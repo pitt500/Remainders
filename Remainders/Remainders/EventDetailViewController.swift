@@ -10,7 +10,7 @@ import UIKit
 import LKAlertController
 import Timepiece
 
-class EventDetailViewController: UIViewController {
+class EventDetailViewController: UIViewController, EditEventDetailDelegate {
     
     @IBOutlet private weak var eventTitleLabel: UILabel!
     @IBOutlet private weak var eventDateLabel: UILabel!
@@ -52,15 +52,26 @@ class EventDetailViewController: UIViewController {
         eventDateLabel.text = self.event.date.stringFromFormat("dd/MMM/yyyy hh:mm a")
         eventDescriptionLabel.text = self.event.note
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    // MARK: - Protocol methods
+    func editEventDetailDidUpdateEvent(controller: AddEventViewController) {
+        self.event = controller.event
+        setLabelsWithCurrentEvent()
     }
-    */
+
+    
+    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "segueEditEvent" {
+            let navController = segue.destinationViewController as! UINavigationController
+            
+            let editVC = navController.viewControllers.first as! AddEventViewController
+            editVC.event =  self.event
+            editVC.delegate = self
+        }
+        
+        
+    }
+    
 
 }

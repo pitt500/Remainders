@@ -126,7 +126,7 @@
                                         <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KRk-gr-1E8" id="ycx-mH-ySD">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type the event title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jtc-Vs-hRy">
@@ -151,7 +151,7 @@
                                         <rect key="frame" x="0.0" y="208" width="600" height="185"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dv4-zl-XvD" id="2CS-Ao-QOg">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="184.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="185"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="G32-LO-Ptb">
@@ -178,7 +178,7 @@
                                         <rect key="frame" x="0.0" y="443" width="600" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7cP-av-owL" id="Php-jq-61W">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="139.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wVM-P4-0fF">
@@ -234,7 +234,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sfp-69-okI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4280" y="28"/>
+            <point key="canvasLocation" x="5906" y="75"/>
         </scene>
         <!--Event View Controller-->
         <scene sceneID="JKj-vG-39r">
@@ -249,7 +249,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aLB-0m-Z4q" id="q8t-Wp-Pey">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="129.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XTX-ce-KOD">
@@ -316,7 +316,7 @@
                                     <outlet property="dayLabel" destination="VE6-hT-0Px" id="YXW-Ge-WG3"/>
                                     <outlet property="monthLabel" destination="gPm-uc-LiV" id="aBy-N3-4T9"/>
                                     <outlet property="titleLabel" destination="eoW-BB-3FF" id="uyg-xS-DaX"/>
-                                    <segue destination="39j-Pf-acd" kind="show" identifier="segueEventDetail" id="Slj-8p-Vw2"/>
+                                    <segue destination="39j-Pf-acd" kind="show" identifier="segueEventDetail" id="Axs-Fw-x1u"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -431,6 +431,18 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="MHY-Lf-RFN">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="9qs-E7-jMA">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nAe-tb-ZPr">
+                                <rect key="frame" x="540" y="7" width="40" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <segue destination="Xty-bd-O1q" kind="presentation" identifier="segueEditEvent" id="cUd-7Y-f7R"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="eventDateLabel" destination="Pl4-bf-Yjf" id="ft7-x8-a1r"/>
                         <outlet property="eventDescriptionLabel" destination="5fH-oR-0uM" id="cqx-aO-v95"/>
@@ -439,7 +451,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NHB-rs-QLc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3555" y="726"/>
+            <point key="canvasLocation" x="3577" y="760"/>
         </scene>
         <!--Upcoming-->
         <scene sceneID="PQc-iP-0eg">
@@ -520,6 +532,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Qgk-20-xUc">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cTR-Ig-b5M" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xty-bd-O1q" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hZt-P8-EmW">
@@ -531,12 +544,12 @@
                         <segue destination="1Ak-KR-xxk" kind="relationship" relationship="rootViewController" id="fbe-rb-Ojh"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cTR-Ig-b5M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3555" y="28"/>
+            <point key="canvasLocation" x="5192" y="75"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="hrC-sh-53x"/>
+        <segue reference="cUd-7Y-f7R"/>
     </inferredMetricsTieBreakers>
 </document>

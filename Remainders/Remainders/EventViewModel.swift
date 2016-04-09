@@ -34,6 +34,16 @@ class EventViewModel: NSObject {
         return eventArray.filter({ $0.date == today }).sort({ $0.date > $1.date })
     }
     
+    static func updateEvent(eventToUpdate: Event, title: String, date: NSDate, notes: String){
+        let realm = try! Realm()
+        
+        try! realm.write({
+            eventToUpdate.title = title
+            eventToUpdate.date = date
+            eventToUpdate.note = notes
+        })
+    }
+    
     static func deleteEvent(event: Event){
         let realm = try! Realm()
         

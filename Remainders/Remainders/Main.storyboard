@@ -387,7 +387,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="l0l-0k-zHh"/>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Delete Event">
                                     <color key="titleColor" red="1" green="0.2229907991" blue="0.2970356502" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>

@@ -17,6 +17,7 @@ class EventViewModel: NSObject {
         
         try! realm.write({
             realm.add(event)
+            UILocalNotification.setNotificationWithEvent(event)
         })
     }
     

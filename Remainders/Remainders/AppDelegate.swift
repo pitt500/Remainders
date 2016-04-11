@@ -21,8 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UserViewModel.setRealmSchemaWithVersion(4)
         
-     
-        
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))
         
         if UserViewModel.isAnyUserLogged(){
             NavigationManager.goToStoryboard("Main", viewControllerId: "MainController")

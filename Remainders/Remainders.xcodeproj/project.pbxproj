@@ -13,6 +13,7 @@
 		B51050551CB4242600916BEF /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B51050531CB4242600916BEF /* Welcome.storyboard */; };
 		B51050571CB4242600916BEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B51050561CB4242600916BEF /* Assets.xcassets */; };
 		B510505A1CB4242600916BEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B51050581CB4242600916BEF /* LaunchScreen.storyboard */; };
+		B59434091CBC18600044E23B /* UILocalNotification+RemainderNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59434081CBC18600044E23B /* UILocalNotification+RemainderNotification.swift */; };
 		B59E1D9E1CB4467C00664399 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B59E1D9D1CB4467C00664399 /* Main.storyboard */; };
 		B59E1DA41CB4476E00664399 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59E1DA31CB4476E00664399 /* User.swift */; };
 		B59E1DA71CB449BD00664399 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59E1DA61CB449BD00664399 /* NavigationManager.swift */; };
@@ -38,6 +39,7 @@
 		B51050561CB4242600916BEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B51050591CB4242600916BEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B510505B1CB4242600916BEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B59434081CBC18600044E23B /* UILocalNotification+RemainderNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILocalNotification+RemainderNotification.swift"; sourceTree = "<group>"; };
 		B59E1D9D1CB4467C00664399 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B59E1DA31CB4476E00664399 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B59E1DA61CB449BD00664399 /* NavigationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				B5CEA9761CB7157400E57EF3 /* NSCalendar+DateComponents.swift */,
+				B59434081CBC18600044E23B /* UILocalNotification+RemainderNotification.swift */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 			files = (
 				B51050521CB4242600916BEF /* LoginViewController.swift in Sources */,
 				B5CEA9701CB629A300E57EF3 /* AddEventViewController.swift in Sources */,
+				B59434091CBC18600044E23B /* UILocalNotification+RemainderNotification.swift in Sources */,
 				B59E1DAC1CB4824B00664399 /* UserViewModel.swift in Sources */,
 				B5CEA97B1CB725D300E57EF3 /* EventDetailViewController.swift in Sources */,
 				B5CEA9721CB6D9EA00E57EF3 /* EventViewModel.swift in Sources */,

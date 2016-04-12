@@ -154,7 +154,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="185"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="G32-LO-Ptb">
+                                                <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="2" translatesAutoresizingMaskIntoConstraints="NO" id="G32-LO-Ptb">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="186"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="481702205.79855901">
                                                         <!--2016-04-07 06:10:05 +0000-->
@@ -344,7 +344,7 @@
         <!--Event Detail View Controller-->
         <scene sceneID="RTB-Ii-HGj">
             <objects>
-                <viewController id="39j-Pf-acd" customClass="EventDetailViewController" customModule="Remainders" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="39j-Pf-acd" customClass="EventDetailViewController" customModule="Remainders" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SeZ-zk-UHE"/>
                         <viewControllerLayoutGuide type="bottom" id="MjO-lg-SxB"/>

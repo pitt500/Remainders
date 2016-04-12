@@ -20,8 +20,8 @@ class EventViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        
+        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayBookDetailViewControllerWithNotification:) name:@"kDisplayBookDetail" object:nil];
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showEventWithDate), name: "kShowEventFromLocalNotification", object: nil)
         
     }
     
@@ -43,6 +43,19 @@ class EventViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kShowEventFromLocalNotification", object: nil)
+    }
+    
+    //MARK: - NotificationCenter methods
+    func showEventWithDate(notification: NSNotification) -> Void {
+        let mainSB = UIStoryboard.init(name: "Main", bundle: nil)
+        let detailVC = mainSB.instantiateViewControllerWithIdentifier("EventDetailViewController") as! EventDetailViewController
+        let date = notification.object as! NSDate
+        detailVC.event = EventViewModel.getEventWthDate(date, user: UserViewModel.getLoggedUser())
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 
     // MARK: - Table view data source

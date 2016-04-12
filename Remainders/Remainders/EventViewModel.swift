@@ -17,7 +17,6 @@ class EventViewModel: NSObject {
         
         try! realm.write({
             realm.add(event)
-            UILocalNotification.setNotificationWithEvent(event)
         })
     }
     
@@ -33,6 +32,18 @@ class EventViewModel: NSObject {
         
         //dateComparison == .Today
         return eventArray.filter({ $0.date == today }).sort({ $0.date > $1.date })
+    }
+    
+    static func getEventWthDate(date: NSDate, user: User) -> Event{
+        
+        
+        //let realm = try! Realm()
+        
+//        try! realm.write({
+//            loggedUser.events.append(event)
+//        })
+        return user.events.filter("date == %@",date).first!
+        
     }
     
     static func updateEvent(eventToUpdate: Event, title: String, date: NSDate, notes: String){

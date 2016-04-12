@@ -47,6 +47,7 @@ class AddEventViewController: UITableViewController {
             let event = Event(WithTitle: titleLabel.text!, date: eventDatePicker.date, note: notesArea.text!)
             EventViewModel.saveEventIntoRealm(event)
             UserViewModel.saveUserEventIntoRealm(event)
+            UILocalNotification.setNotificationWithEvent(event)
         }else{
             //Edit current event
             EventViewModel.updateEvent(event!, title: titleLabel.text!, date: eventDatePicker.date, notes: notesArea.text!)

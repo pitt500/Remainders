@@ -18,4 +18,13 @@ extension UILocalNotification {
         
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
+    
+    static func cancelNotificationForEvent(event: Event) -> Void {
+        let app: UIApplication = UIApplication.sharedApplication()
+        let notification = app.scheduledLocalNotifications?.filter({ (notif) -> Bool in
+            notif.fireDate == event.date && notif.alertBody == event.title
+        }).first
+        
+        app.cancelLocalNotification(notification!)
+    }
 }

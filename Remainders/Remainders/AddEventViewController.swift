@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LKAlertController
 
 protocol EditEventDetailDelegate {
     func editEventDetailDidUpdateEvent(controller: AddEventViewController) -> Void
@@ -42,6 +43,11 @@ class AddEventViewController: UITableViewController {
     
     @IBAction func saveEvent(sender: AnyObject) {
 
+        if titleLabel.text == "" {
+            Alert(title: "Error", message: "Please add a title for the event").addAction("OK").show()
+            return
+        }
+        
         if event == nil {
             //Save new event
             let event = Event(WithTitle: titleLabel.text!, date: eventDatePicker.date, note: notesArea.text!)

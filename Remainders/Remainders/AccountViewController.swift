@@ -8,6 +8,7 @@
 
 import UIKit
 import FBSDKLoginKit
+import AlamofireImage
 
 class AccountViewController: UIViewController {
 
@@ -25,9 +26,8 @@ class AccountViewController: UIViewController {
             self.nameLabel.text = user.name
             self.emailLabel.text = user.email
             
-            let url = NSURL(string: "https://graph.facebook.com/\(user.tokenId)/picture?type=large")
-            let data = NSData(contentsOfURL: url!)
-            self.profileImageView.image = UIImage(data: data!)
+            let url = NSURL(string: "https://graph.facebook.com/\(user.tokenId)/picture?type=large")!
+            self.profileImageView.af_setImageWithURL(url)
         }) { (error) in
             print(error.description)
         }

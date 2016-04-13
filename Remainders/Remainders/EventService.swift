@@ -126,6 +126,7 @@ class EventService: NSObject {
                     eventToUpdate.date = newEvent.date
                     eventToUpdate.note = newEvent.note
                 })
+                try UILocalNotification.setNotificationWithEvent(eventToUpdate)
                 
                 completion?()
             }catch{

@@ -13,7 +13,9 @@ import Timepiece
 class EventViewModel: NSObject {
     
     static func deleteEvent(event: Event, completion: (() -> Void)?,  onFailure: ((error: NSError) -> Void)?){
-        EventService.deleteEvent(event, completion: nil) { (error) in
+        EventService.deleteEvent(event, completion: {
+            completion?()
+        }) { (error) in
             onFailure?(error: error)
         }
     }
@@ -28,9 +30,9 @@ class EventViewModel: NSObject {
     
     static func getEventsForCurrentUser(dateComparison: DateComparison, completion: ((events: [Event]) -> Void)?, onFailure: ((error: NSError) -> Void)?) -> Void{
         EventService.getEventsForCurrentUser(dateComparison, completion: { (events) in
-            completion!(events: events)
+            completion?(events: events)
         }) { (error) in
-            onFailure!(error: error)
+            onFailure?(error: error)
         }
     }
     

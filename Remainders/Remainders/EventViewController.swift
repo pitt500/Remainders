@@ -10,7 +10,7 @@ import UIKit
 
 class EventViewController: UITableViewController {
     
-    var events: [Event]!
+    var events: [Event]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,14 +64,14 @@ class EventViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.events.count
+        return self.events?.count ?? 0
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: EventViewCell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as! EventViewCell
         
-        cell.configureCellWithEvent(self.events[indexPath.row])
+        cell.configureCellWithEvent(self.events![indexPath.row])
         
         return cell
     }
@@ -85,7 +85,7 @@ class EventViewController: UITableViewController {
             let detailVC = segue.destinationViewController as! EventDetailViewController
             let cell = sender as! EventViewCell
             let selectedIndexPath = self.tableView.indexPathForCell(cell)
-            detailVC.event =  self.events[(selectedIndexPath?.row)!]
+            detailVC.event =  self.events![(selectedIndexPath?.row)!]
         }
         
         

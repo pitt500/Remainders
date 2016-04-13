@@ -48,65 +48,54 @@ class UserViewModel: NSObject {
     
     
     
-    
-    
-//    static func getLoggedUser() throws -> User{
-//        let realm = try! Realm()
-//        let user = realm.objects(User).filter("isLogged == true").first
-//        return user!
-//    }
-    
-    
-    static func getLoggedUserWithCompletion(completion: (user: User)->Void, onFailure: (error: NSError) -> Void) -> Void{
+    static func getLoggedUserWithCompletion(completion: ((user: User)->Void)?, onFailure: ((error: NSError) -> Void)?) -> Void{
         
         UserService.getLoggedUserWithCompletionHandler({ (user) in
-            completion(user: user )
+            completion?(user: user )
         }) { (error) in
-            onFailure(error: error )
+            onFailure?(error: error )
         }
     }
     
-    static func getUserWithEmail(email: String) -> User?{
-        let realm = try! Realm()
-        let user: User? = realm.objects(User).filter("email == '\(email)'").first
-        return user
-    }
-    
-    
-    static func deleteUserFromRealm(user: User) -> Void {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.delete(user)
-        }
-    }
-    
-    static func saveUserIntoRealm(user: User) -> Void {
-        let realm = try! Realm()
-        
-        try! realm.write({
-            realm.add(user)
-        })
-    }
-    
-    static func saveUserEventIntoRealm(event: Event) -> Void{
-        getLoggedUserWithCompletion({ (user) in
-            let realm = try! Realm()
-            
-            try! realm.write({
-                user.events.append(event)
-            })
+    static func getUserWithEmail(email: String, completion: ((user: User?) -> Void)?, onFailure: ((error: NSError) -> Void)?) -> Void{
+        UserService.getUserWithEmail(email, completion: { (user) in
+            completion?(user: user)
         }) { (error) in
-            
+            onFailure?(error: error )
         }
     }
     
-    static func updateLoginState(user: User, isUserLogged: Bool) -> Void {
-        let realm = try! Realm()
-        
-        try! realm.write({ 
-            user.isLogged = isUserLogged
-            realm.add(user, update: true)
-        })
+    
+    static func deleteUserFromRealm(user: User, completion: (() -> Void)?, onFailure: ((error: NSError) -> Void)?) -> Void {
+        UserService.deleteUserFromRealm(user, completion: { 
+            completion?()
+        }) { (error) in
+            onFailure?(error: error )
+        }
+    }
+    
+    static func saveUserIntoRealm(user: User, completion: (() -> Void)?, onFailure: ((error: NSError) -> Void)?) -> Void {
+        UserService.saveUserIntoRealm(user, completion: { 
+            completion?()
+        }) { (error) in
+            onFailure?(error: error )
+        }
+    }
+    
+    static func saveUserEventIntoRealm(event: Event, completion: (() -> Void)?, onFailure: ((error: NSError) -> Void)?) -> Void{
+        UserService.saveUserEventIntoRealm(event, completion: {
+            completion?()
+        }) { (error) in
+            onFailure?(error: error )
+        }
+    }
+    
+    static func updateLoginState(user: User, isUserLogged: Bool,completion: (() -> Void)?, onFailure: ((error: NSError) -> Void)?) -> Void {
+        UserService.updateLoginState(user, isUserLogged:  isUserLogged, completion: {
+            completion?()
+        }) { (error) in
+            onFailure?(error: error )
+        }
     }
 
 }

@@ -43,13 +43,27 @@ class LoginViewController: UIViewController {
         FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "email, name"]).startWithCompletionHandler { (connection, result, error) in
             if error == nil{
                 let dictionary = result as! [String : String]
-                if let user = UserViewModel.getUserWithEmail(dictionary["email"]!){
-                    UserViewModel.updateLoginState(user, isUserLogged: true)
-                }else{
-                    UserViewModel.saveUserIntoRealm(User(WithName: dictionary["name"]!, email: dictionary["email"]!, tokenId: dictionary["id"]!))
-                }
+
+                UserViewModel.getUserWithEmail(dictionary["email"]!, completion: { (user) in
+                    if user != nil{
+                        UserViewModel.updateLoginState(user!, isUserLogged: true, completion: nil, onFailure: { (error) in
+                            print(error.description)
+                        })
+                    }else{
+                        let newUser = User(WithName: dictionary["name"]!, email: dictionary["email"]!, tokenId: dictionary["id"]!)
+                        UserViewModel.saveUserIntoRealm(newUser,  completion: nil, onFailure: { (error) in
+                            print(error.description)
+                        })
+                    }
+                    
+                    NavigationManager.goToStoryboard("Main", viewControllerId: "MainController")
+                }, onFailure: { (error) in
+                    print(error.description)
+                })
                 
-                NavigationManager.goToStoryboard("Main", viewControllerId: "MainController")
+                
+                
+                
             }else{
                 print("Error getting facebook data...")
             }

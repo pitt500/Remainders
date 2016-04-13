@@ -50,8 +50,13 @@ class AccountViewController: UIViewController {
     
     
     @IBAction func LogOut(sender: AnyObject) {
-        UserViewModel.updateLoginState(self.user, isUserLogged: false)
-        NavigationManager.goToStoryboard("Welcome", viewControllerId: "LoginViewController")
+
+        UserViewModel.updateLoginState(self.user, isUserLogged: false, completion: { 
+            NavigationManager.goToStoryboard("Welcome", viewControllerId: "LoginViewController")
+        }) { (error) in
+            print(error.description)
+        }
+        
     }
     
 

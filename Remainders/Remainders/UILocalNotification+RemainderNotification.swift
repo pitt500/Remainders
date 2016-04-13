@@ -25,6 +25,8 @@ extension UILocalNotification {
             notif.fireDate == event.date && notif.alertBody == event.title
         }).first
         
-        app.cancelLocalNotification(notification!)
+        if notification != nil{
+            app.cancelLocalNotification(notification!)
+        }
     }
 }

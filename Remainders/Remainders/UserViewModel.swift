@@ -50,7 +50,7 @@ class UserViewModel: NSObject {
     
     static func getLoggedUserWithCompletion(completion: ((user: User)->Void)?, onFailure: ((error: NSError) -> Void)?) -> Void{
         
-        UserService.getLoggedUserWithCompletionHandler({ (user) in
+        try! UserService.getLoggedUserWithCompletionHandler({ (user) in
             completion?(user: user )
         }) { (error) in
             onFailure?(error: error )

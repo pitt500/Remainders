@@ -20,16 +20,26 @@ class AccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional selabeltup after loading the view.
-        self.user = UserViewModel.getLoggedUser()
-        nameLabel.text = user.name
-        emailLabel.text = user.email
-        upcomingEventsLabel.text = String(EventViewModel.getEventsForUser(user, dateComparison: DateComparison.AfterToday).count)
+        UserViewModel.getLoggedUserWithCompletion({ (user) in
+            self.user = user
+            self.nameLabel.text = user.name
+            self.emailLabel.text = user.email
+            
+            let url = NSURL(string: "https://graph.facebook.com/\(user.tokenId)/picture?type=large")
+            let data = NSData(contentsOfURL: url!)
+            self.profileImageView.image = UIImage(data: data!)
+        }) { (error) in
+            print(error.description)
+        }
         
         
-        let url = NSURL(string: "https://graph.facebook.com/\(user.tokenId)/picture?type=large")
-        let data = NSData(contentsOfURL: url!)
-        profileImageView.image = UIImage(data: data!)
+        EventViewModel.getEventsForCurrentUser(.UpcomingEvents, completion: { (events) in
+            self.upcomingEventsLabel.text = String(events.count)
+        }) { (error) in
+            print(error.description)
+        }
+        
+        
         
     }
 
@@ -44,15 +54,5 @@ class AccountViewController: UIViewController {
         NavigationManager.goToStoryboard("Welcome", viewControllerId: "LoginViewController")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

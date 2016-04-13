@@ -11,56 +11,43 @@ import RealmSwift
 import Timepiece
 
 class EventViewModel: NSObject {
-
-    static func saveEventIntoRealm(event: Event) -> Void {
-        let realm = try! Realm()
-        
-        try! realm.write({
-            realm.add(event)
-        })
+    
+    static func deleteEvent(event: Event, completion: (() -> Void)?,  onFailure: ((error: NSError) -> Void)?){
+        EventService.deleteEvent(event, completion: nil) { (error) in
+            onFailure?(error: error)
+        }
     }
     
-    static func getEventsForUser(user: User, dateComparison: DateComparison) -> [Event] {
-        let today = NSDate()
-        let eventArray = Array(user.events)
+    static func getEventWithDate(date: NSDate, completion: ((event: Event) -> Void)?, onFailure: ((error: NSError) -> Void)?){
+        EventService.getEventWithDate(date, completion: { (event) in
+            completion?(event: event)
+        }) { (error) in
+            onFailure?(error: error)
+        }
+    }
+    
+    static func getEventsForCurrentUser(dateComparison: DateComparison, completion: ((events: [Event]) -> Void)?, onFailure: ((error: NSError) -> Void)?) -> Void{
+        EventService.getEventsForCurrentUser(dateComparison, completion: { (events) in
+            completion!(events: events)
+        }) { (error) in
+            onFailure!(error: error)
+        }
+    }
+    
+    static func saveNewEvent(event: Event, completion: (() -> Void)?,  onFailure: ((error: NSError) -> Void)?){
         
-        if dateComparison == .BeforeToday {
-            return eventArray.filter({ $0.date < today }).sort({ $0.date > $1.date })
-        } else if dateComparison == .AfterToday{
-            return eventArray.filter({ $0.date > today }).sort({ $0.date > $1.date })
+        EventService.saveNewEvent(event, completion: { 
+            completion?()
+        }) { (error) in
+            onFailure?(error: error)
         }
         
-        //dateComparison == .Today
-        return eventArray.filter({ $0.date == today }).sort({ $0.date > $1.date })
     }
     
-    static func getEventWthDate(date: NSDate, user: User) -> Event{
+    static func updateEvent(eventToUpdate: Event, newEvent: Event, completion: (() -> Void)?,  onFailure: ((error: NSError) -> Void)?){
         
-        
-        //let realm = try! Realm()
-        
-//        try! realm.write({
-//            loggedUser.events.append(event)
-//        })
-        return user.events.filter("date == %@",date).first!
-        
-    }
-    
-    static func updateEvent(eventToUpdate: Event, title: String, date: NSDate, notes: String){
-        let realm = try! Realm()
-        
-        try! realm.write({
-            eventToUpdate.title = title
-            eventToUpdate.date = date
-            eventToUpdate.note = notes
-        })
-    }
-    
-    static func deleteEvent(event: Event){
-        let realm = try! Realm()
-        
-        try! realm.write({
-            realm.delete(event)
-        })
+        EventService.updateEvent(eventToUpdate, newEvent: newEvent, completion: nil) { (error) in
+            onFailure?(error: error)
+        }
     }
 }

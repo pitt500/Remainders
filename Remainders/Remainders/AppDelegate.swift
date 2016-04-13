@@ -22,11 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserViewModel.setRealmSchemaWithVersion(4)
         
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))
-        
-        if UserViewModel.isAnyUserLogged(){
-            NavigationManager.goToStoryboard("Main", viewControllerId: "MainController")
-        }else{
-            NavigationManager.goToStoryboard("Welcome", viewControllerId: "LoginViewController")
+                
+        UserViewModel.checkIfAnyUserIsLoggedWithCompletion({ (isUserLogged) in
+            if isUserLogged{
+                NavigationManager.goToStoryboard("Main", viewControllerId: "MainController")
+            }else{
+                NavigationManager.goToStoryboard("Welcome", viewControllerId: "LoginViewController")
+            }
+        }) { (error) in
+            print(error.description)
         }
         
         return true

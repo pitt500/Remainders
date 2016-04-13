@@ -37,22 +37,33 @@ class UserViewModel: NSObject {
     
     
     
-    static func isAnyUserLogged() -> Bool{
+    static func checkIfAnyUserIsLoggedWithCompletion(completion: ((isUserLogged: Bool) -> Void)?, onFailure: ((error: NSError) -> Void)?) -> Void{
         
-        let realm = try! Realm()
-        
-        let user = realm.objects(User).filter("isLogged == true")
-        if user.count >= 1{
-            return true
+        UserService.checkIfAnyUserIsLoggedWithCompletion({ (isUserLogged) in
+            completion?(isUserLogged: isUserLogged)
+        }) { (error) in
+            onFailure?(error: error)
         }
-        
-        return false
     }
     
-    static func getLoggedUser() -> User{
-        let realm = try! Realm()
-        let user = realm.objects(User).filter("isLogged == true").first
-        return user!
+    
+    
+    
+    
+//    static func getLoggedUser() throws -> User{
+//        let realm = try! Realm()
+//        let user = realm.objects(User).filter("isLogged == true").first
+//        return user!
+//    }
+    
+    
+    static func getLoggedUserWithCompletion(completion: (user: User)->Void, onFailure: (error: NSError) -> Void) -> Void{
+        
+        UserService.getLoggedUserWithCompletionHandler({ (user) in
+            completion(user: user )
+        }) { (error) in
+            onFailure(error: error )
+        }
     }
     
     static func getUserWithEmail(email: String) -> User?{
@@ -77,14 +88,16 @@ class UserViewModel: NSObject {
         })
     }
     
-    static func saveUserEventIntoRealm(event: Event) -> Void{        
-        let loggedUser = getLoggedUser()
-        
-        let realm = try! Realm()
-        
-        try! realm.write({
-            loggedUser.events.append(event)
-        })
+    static func saveUserEventIntoRealm(event: Event) -> Void{
+        getLoggedUserWithCompletion({ (user) in
+            let realm = try! Realm()
+            
+            try! realm.write({
+                user.events.append(event)
+            })
+        }) { (error) in
+            
+        }
     }
     
     static func updateLoginState(user: User, isUserLogged: Bool) -> Void {

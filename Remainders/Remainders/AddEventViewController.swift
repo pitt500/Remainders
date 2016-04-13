@@ -24,6 +24,7 @@ class AddEventViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.eventDatePicker.minimumDate = NSDate()
 
         if event != nil {
             titleLabel.text = event?.title
@@ -48,16 +49,25 @@ class AddEventViewController: UITableViewController {
             return
         }
         
-        if event == nil {
+        if eventDatePicker.date < 1.minutes.later {
+            Alert(title: "Error", message: "Please set a future time").addAction("OK").show()
+            return
+        }
+        
+        let newEvent = Event(WithTitle: titleLabel.text!, date: eventDatePicker.date, note: notesArea.text!)
+        if self.event == nil {
             //Save new event
-            let event = Event(WithTitle: titleLabel.text!, date: eventDatePicker.date, note: notesArea.text!)
-            EventViewModel.saveEventIntoRealm(event)
-            UserViewModel.saveUserEventIntoRealm(event)
-            UILocalNotification.setNotificationWithEvent(event)
+            EventViewModel.saveNewEvent(newEvent, completion: nil, onFailure: { (error) in
+                print(error.description)
+            })
+            
         }else{
             //Edit current event
-            EventViewModel.updateEvent(event!, title: titleLabel.text!, date: eventDatePicker.date, notes: notesArea.text!)
-            delegate?.editEventDetailDidUpdateEvent(self)
+            EventViewModel.updateEvent(self.event!, newEvent: newEvent, completion: {
+                self.delegate?.editEventDetailDidUpdateEvent(self)
+            }, onFailure: { (error) in
+                    print(error.description)
+            })
         }
         
         
@@ -79,61 +89,5 @@ class AddEventViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
-    
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

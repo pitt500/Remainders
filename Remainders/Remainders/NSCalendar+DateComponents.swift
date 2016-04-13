@@ -30,7 +30,7 @@ extension NSCalendar {
 
 public enum DateComparison : Int {
     
-    case BeforeToday
+    case PastEvents
     case Today
-    case AfterToday
+    case UpcomingEvents
 }

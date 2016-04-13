@@ -46,7 +46,9 @@ class EventViewModel: NSObject {
     
     static func updateEvent(eventToUpdate: Event, newEvent: Event, completion: (() -> Void)?,  onFailure: ((error: NSError) -> Void)?){
         
-        EventService.updateEvent(eventToUpdate, newEvent: newEvent, completion: nil) { (error) in
+        EventService.updateEvent(eventToUpdate, newEvent: newEvent, completion: {
+            completion?()
+        }) { (error) in
             onFailure?(error: error)
         }
     }

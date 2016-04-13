@@ -123,16 +123,16 @@
                             <tableViewSection headerTitle="Title" id="Y17-Jy-rOC">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KRk-gr-1E8">
-                                        <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KRk-gr-1E8" id="ycx-mH-ySD">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type the event title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jtc-Vs-hRy">
                                                     <rect key="frame" x="8" y="0.0" width="584" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -148,10 +148,10 @@
                             <tableViewSection headerTitle="Event Date" id="MGb-VS-P2b">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="185" id="Dv4-zl-XvD">
-                                        <rect key="frame" x="0.0" y="207.5" width="600" height="185"/>
+                                        <rect key="frame" x="0.0" y="208" width="600" height="185"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dv4-zl-XvD" id="2CS-Ao-QOg">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="184.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="185"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="2" translatesAutoresizingMaskIntoConstraints="NO" id="G32-LO-Ptb">
@@ -175,17 +175,17 @@
                             <tableViewSection headerTitle="Notes" id="56b-oG-Ctx">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="140" id="7cP-av-owL">
-                                        <rect key="frame" x="0.0" y="442.5" width="600" height="140"/>
+                                        <rect key="frame" x="0.0" y="443" width="600" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7cP-av-owL" id="Php-jq-61W">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="139.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wVM-P4-0fF">
                                                     <rect key="frame" x="8" y="0.0" width="584" height="140"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                                 </textView>
                                             </subviews>
                                             <constraints>
@@ -249,7 +249,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aLB-0m-Z4q" id="q8t-Wp-Pey">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="129.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XTX-ce-KOD">

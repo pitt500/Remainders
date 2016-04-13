@@ -12,18 +12,23 @@ import RealmSwift
 class UserService: NSObject {
     static func getLoggedUserWithCompletionHandler(completion: ((user: User) ->Void)?, onFailure: ((error: NSError) -> Void)?) -> Void {
         
-        do{
-            let realm = try Realm()
-            let user = realm.objects(User).filter("isLogged == true").first
+        let queue = dispatch_queue_create("serial-worker", DISPATCH_QUEUE_SERIAL)
+        dispatch_async(queue) {
+                do{
+                    let realm = try Realm()
+                    let user = realm.objects(User).filter("isLogged == true").first
+                    
+                    
+                    if let actualUser = user {
+                        completion?(user: actualUser)
+                    }else{
+                        onFailure?(error: NSError(domain: "", code: 0, userInfo: ["message" : "Something went wrong"]))
+                    }
+                    
+                }catch{
+                    onFailure?(error: NSError(domain: "", code: 0, userInfo: ["message" : "Something went wrong"]))
+                }
             
-            
-            if let actualUser = user {
-                completion?(user: actualUser)
-            }else{
-                onFailure?(error: NSError(domain: "", code: 0, userInfo: ["message" : "Something went wrong"]))
-            }
-        }catch{
-            onFailure?(error: NSError(domain: "", code: 0, userInfo: ["message" : "Something went wrong"]))
         }
         
     }

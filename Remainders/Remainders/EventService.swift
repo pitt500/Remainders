@@ -33,7 +33,7 @@ class EventService: NSObject {
                 onFailure?(error: error)
             })
         }catch{
-            onFailure?(error: NSError(domain: "", code: 404, userInfo: nil))
+            onFailure?(error: NSError.errorWithMessage("Error getting logged user"))
         }
         
     }
@@ -49,7 +49,7 @@ class EventService: NSObject {
                 onFailure?(error: error)
             })
         }catch{
-            onFailure?(error: NSError(domain: "", code: 404, userInfo: nil))
+            onFailure?(error: NSError.errorWithMessage("Error getting event with date"))
         }
     }
     
@@ -62,11 +62,11 @@ class EventService: NSObject {
             })
             completion?()
         }catch{
-            onFailure?(error: NSError(domain: "", code: 404, userInfo: nil))
+            onFailure?(error: NSError.errorWithMessage("Error saving event into Realm"))
         }
     }
     
-    static func saveUserEventIntoRealm(event: Event,completion: (() -> Void)?,  onFailure: ((error: NSError) -> Void)?) throws -> Void{
+    static func addEventToLoggedUser(event: Event,completion: (() -> Void)?,  onFailure: ((error: NSError) -> Void)?) throws -> Void{
 
         do{
             try UserService.getLoggedUserWithCompletionHandler({ (user) in
@@ -79,7 +79,7 @@ class EventService: NSObject {
                 onFailure?(error: error)
             })
         }catch{
-            onFailure?(error: NSError(domain: "", code: 404, userInfo: nil))
+            onFailure?(error: NSError.errorWithMessage("Error saving User's event into Realm"))
         }
 
     }
@@ -88,11 +88,11 @@ class EventService: NSObject {
     static func saveNewEvent(event: Event, completion: (() -> Void)?,  onFailure: ((error: NSError) -> Void)?){
         do{
             try saveEventIntoRealm(event, completion: nil, onFailure: nil)
-            try saveUserEventIntoRealm(event, completion: nil, onFailure: nil)
+            try addEventToLoggedUser(event, completion: nil, onFailure: nil)
             try UILocalNotification.setNotificationWithEvent(event)
             completion?()
         }catch{
-            onFailure?(error: NSError(domain: "", code: 404, userInfo: nil))
+            onFailure?(error: NSError.errorWithMessage("Error processing new event"))
         }
     }
     
@@ -111,15 +111,15 @@ class EventService: NSObject {
             
             completion?()
         }catch{
-            onFailure?(error: NSError(domain: "", code: 404, userInfo: nil))
+            onFailure?(error: NSError.errorWithMessage("Error updating event"))
         }
     }
     
     static func deleteEvent(event: Event, completion: (() -> Void)?,  onFailure: ((error: NSError) -> Void)?){
         
         do{
-            try UILocalNotification.cancelNotificationForEvent(event)
             
+            try UILocalNotification.cancelNotificationForEvent(event)
             let realm = try Realm()
             try realm.write({
                 realm.delete(event)
@@ -128,7 +128,7 @@ class EventService: NSObject {
             
             completion?()
         }catch{
-            onFailure?(error: NSError(domain: "", code: 404, userInfo: nil))
+            onFailure?(error: NSError.errorWithMessage("Error deleting event"))
         }
     }
 }

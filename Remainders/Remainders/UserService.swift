@@ -19,11 +19,11 @@ class UserService: NSObject {
             if let actualUser = user {
                 completion?(user: actualUser)
             }else{
-                onFailure?(error: NSError(domain: "", code: 0, userInfo: ["message" : "Something went wrong"]))
+                onFailure?(error:  NSError.errorWithMessage("There are not user logged on"))
             }
             
         }catch{
-            onFailure?(error: NSError(domain: "", code: 0, userInfo: ["message" : "Something went wrong"]))
+            onFailure?(error:  NSError.errorWithMessage("Error accessing to Realm"))
         }
         
     }
@@ -36,7 +36,7 @@ class UserService: NSObject {
             let isAnyLogged = (user.count == 1) ? true : false
             completion?(isUserLogged: isAnyLogged)
         }catch{
-            onFailure?(error: NSError(domain: "", code: 0, userInfo: ["message" : "Something went wrong"]))
+            onFailure?(error:  NSError.errorWithMessage("Error checking if any user is logged on"))
         }
     }
     
@@ -51,7 +51,7 @@ class UserService: NSObject {
             let user: User? = realm.objects(User).filter("email == '\(email)'").first
             completion?(user: user)
         }catch{
-            onFailure?(error: NSError(domain: "", code: 0, userInfo: ["message" : "Something went wrong"]))
+            onFailure?(error:  NSError.errorWithMessage("Error getting user with email: \(email)"))
         }
     }
     
@@ -65,7 +65,7 @@ class UserService: NSObject {
             completion?()
         
         }catch{
-            onFailure?(error: NSError(domain: "", code: 0, userInfo: ["message" : "Something went wrong"]))
+            onFailure?(error:  NSError.errorWithMessage("Error deleting user from Realm"))
         }
     }
     
@@ -79,27 +79,10 @@ class UserService: NSObject {
             })
             completion?()
         }catch{
-            onFailure?(error: NSError(domain: "", code: 0, userInfo: ["message" : "Something went wrong"]))
+            onFailure?(error:  NSError.errorWithMessage("Error saving user into Realm"))
         }
     }
-    
-    static func saveUserEventIntoRealm(event: Event, completion: (() -> Void)?, onFailure: ((error: NSError) -> Void)?) -> Void{
-        
-        do{
-            try getLoggedUserWithCompletionHandler({ (user) in
-                let realm = try! Realm()
-                
-                try! realm.write({
-                    user.events.append(event)
-                })
-                completion?()
-            }) { (error) in
-                onFailure?(error: error)
-            }
-        }catch{
-            onFailure?(error: NSError(domain: "", code: 0, userInfo: ["message" : "Something went wrong"]))
-        }
-    }
+
     
     static func updateLoginState(user: User, isUserLogged: Bool, completion: (() -> Void)?, onFailure: ((error: NSError) -> Void)?) -> Void {
         
@@ -111,7 +94,7 @@ class UserService: NSObject {
                 realm.add(user, update: true)
             })
         }catch{
-            onFailure?(error: NSError(domain: "", code: 0, userInfo: ["message" : "Something went wrong"]))
+            onFailure?(error: NSError.errorWithMessage("Error updating login state"))
         }
     }
     

@@ -44,7 +44,7 @@ class EventService: NSObject {
         do{
             try UserService.getLoggedUserWithCompletionHandler({ (user) in
                 let event = user.events.filter("date == %@",date).first!
-                completion!(event: event)
+                completion?(event: event)
             }, onFailure: { (error) in
                 onFailure?(error: error)
             })
@@ -78,6 +78,7 @@ class EventService: NSObject {
             }, onFailure: { (error) in
                 onFailure?(error: error)
             })
+            completion?()
         }catch{
             onFailure?(error: NSError.errorWithMessage("Error saving User's event into Realm"))
         }
@@ -89,7 +90,6 @@ class EventService: NSObject {
         do{
             try saveEventIntoRealm(event, completion: nil, onFailure: nil)
             try addEventToLoggedUser(event, completion: nil, onFailure: nil)
-            try UILocalNotification.setNotificationWithEvent(event)
             completion?()
         }catch{
             onFailure?(error: NSError.errorWithMessage("Error processing new event"))
@@ -107,8 +107,6 @@ class EventService: NSObject {
                 eventToUpdate.date = newEvent.date
                 eventToUpdate.note = newEvent.note
             })
-            try UILocalNotification.setNotificationWithEvent(eventToUpdate)
-            
             completion?()
         }catch{
             onFailure?(error: NSError.errorWithMessage("Error updating event"))
@@ -118,15 +116,12 @@ class EventService: NSObject {
     static func deleteEvent(event: Event, completion: (() -> Void)?,  onFailure: ((error: NSError) -> Void)?){
         
         do{
-            
-            try UILocalNotification.cancelNotificationForEvent(event)
+            completion?()
             let realm = try Realm()
             try realm.write({
                 realm.delete(event)
                 
             })
-            
-            completion?()
         }catch{
             onFailure?(error: NSError.errorWithMessage("Error deleting event"))
         }

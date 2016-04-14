@@ -28,6 +28,7 @@
 		B5CEA9741CB6E43700E57EF3 /* EventViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEA9731CB6E43700E57EF3 /* EventViewCell.swift */; };
 		B5CEA9771CB7157400E57EF3 /* NSCalendar+DateComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEA9761CB7157400E57EF3 /* NSCalendar+DateComponents.swift */; };
 		B5CEA97B1CB725D300E57EF3 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEA97A1CB725D300E57EF3 /* EventDetailViewController.swift */; };
+		B5ECBCB91CBF0C4D00A3CB9B /* NSError+CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5ECBCB81CBF0C4D00A3CB9B /* NSError+CustomError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		B5CEA9731CB6E43700E57EF3 /* EventViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewCell.swift; sourceTree = "<group>"; };
 		B5CEA9761CB7157400E57EF3 /* NSCalendar+DateComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalendar+DateComponents.swift"; sourceTree = "<group>"; };
 		B5CEA97A1CB725D300E57EF3 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		B5ECBCB81CBF0C4D00A3CB9B /* NSError+CustomError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+CustomError.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 			children = (
 				B5CEA9761CB7157400E57EF3 /* NSCalendar+DateComponents.swift */,
 				B59434081CBC18600044E23B /* UILocalNotification+RemainderNotification.swift */,
+				B5ECBCB81CBF0C4D00A3CB9B /* NSError+CustomError.swift */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B594340E1CBCBB300044E23B /* EventService.swift in Sources */,
+				B5ECBCB91CBF0C4D00A3CB9B /* NSError+CustomError.swift in Sources */,
 				B51050521CB4242600916BEF /* LoginViewController.swift in Sources */,
 				B5CEA9701CB629A300E57EF3 /* AddEventViewController.swift in Sources */,
 				B59434091CBC18600044E23B /* UILocalNotification+RemainderNotification.swift in Sources */,

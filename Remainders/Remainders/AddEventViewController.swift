@@ -57,13 +57,16 @@ class AddEventViewController: UITableViewController {
         let newEvent = Event(WithTitle: titleLabel.text!, date: eventDatePicker.date, note: notesArea.text!)
         if self.event == nil {
             //Save new event
-            EventViewModel.saveNewEvent(newEvent, completion: nil, onFailure: { (error) in
+            EventViewModel.saveNewEvent(newEvent, completion: {
+                UILocalNotification.setNotificationWithEvent(newEvent)
+            }, onFailure: { (error) in
                 print(error.description)
             })
             
         }else{
             //Edit current event
             EventViewModel.updateEvent(self.event!, newEvent: newEvent, completion: {
+                UILocalNotification.setNotificationWithEvent(self.event!)
                 self.delegate?.editEventDetailDidUpdateEvent(self)
             }, onFailure: { (error) in
                     print(error.description)

@@ -43,7 +43,8 @@ class EventDetailViewController: UIViewController, EditEventDetailDelegate {
             .addAction("Cancel")
             .addAction("Delete", style: .Destructive, handler: { _ in
                 
-                EventViewModel.deleteEvent(self.event, completion: { 
+                EventViewModel.deleteEvent(self.event, completion: {
+                    UILocalNotification.cancelNotificationForEvent(self.event)
                     self.navigationController?.popToRootViewControllerAnimated(true)
                 }, onFailure: { (error) in
                     print(error.description)

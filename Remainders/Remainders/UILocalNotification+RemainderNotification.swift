@@ -10,7 +10,7 @@ import UIKit
 
 extension UILocalNotification {
     
-    static func setNotificationWithEvent(event: Event) throws -> Void{
+    static func setNotificationWithEvent(event: Event) -> Void{
         let notification = UILocalNotification()
         notification.alertTitle = "Remainder"
         notification.alertBody = event.title
@@ -19,7 +19,7 @@ extension UILocalNotification {
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
     
-    static func cancelNotificationForEvent(event: Event) throws -> Void {
+    static func cancelNotificationForEvent(event: Event) -> Void {
         let app: UIApplication = UIApplication.sharedApplication()
         let notification = app.scheduledLocalNotifications?.filter({ (notif) -> Bool in
             notif.fireDate == event.date && notif.alertBody == event.title

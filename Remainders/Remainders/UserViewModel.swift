@@ -82,14 +82,6 @@ class UserViewModel: NSObject {
         }
     }
     
-    static func saveUserEventIntoRealm(event: Event, completion: (() -> Void)?, onFailure: ((error: NSError) -> Void)?) -> Void{
-        UserService.saveUserEventIntoRealm(event, completion: {
-            completion?()
-        }) { (error) in
-            onFailure?(error: error )
-        }
-    }
-    
     static func updateLoginState(user: User, isUserLogged: Bool,completion: (() -> Void)?, onFailure: ((error: NSError) -> Void)?) -> Void {
         UserService.updateLoginState(user, isUserLogged:  isUserLogged, completion: {
             completion?()

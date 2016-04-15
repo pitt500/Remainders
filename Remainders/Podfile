@@ -2,7 +2,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'ObjectMapper', '~> 1.2'
 pod 'RealmSwift', '~> 0.98'
 pod 'FBSDKCoreKit'
 pod 'FBSDKShareKit'

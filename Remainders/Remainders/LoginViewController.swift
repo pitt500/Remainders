@@ -12,7 +12,6 @@ import RealmSwift
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var loginLabel: UILabel!
     var loginManager: FBSDKLoginManager!
     
     override func viewDidLoad() {

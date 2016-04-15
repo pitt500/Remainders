@@ -15,7 +15,7 @@ class EventService: NSObject {
         
         do{
             try UserService.getLoggedUserWithCompletionHandler({ (user) in
-                completion?(events: Array(user.events))
+                completion?(events: Array(user!.events))
             }, onFailure: { (error) in
                 onFailure?(error: error)
             })
@@ -30,7 +30,7 @@ class EventService: NSObject {
     
         do{
             try UserService.getLoggedUserWithCompletionHandler({ (user) in
-                let event = user.events.filter("date == %@",date).first!
+                let event = user!.events.filter("date == %@",date).first!
                 completion?(event: event)
             }, onFailure: { (error) in
                 onFailure?(error: error)
@@ -60,7 +60,7 @@ class EventService: NSObject {
                 let realm = try! Realm()
                 
                 try! realm.write({
-                    user.events.append(event)
+                    user!.events.append(event)
                 })
             }, onFailure: { (error) in
                 onFailure?(error: error)
@@ -75,8 +75,12 @@ class EventService: NSObject {
     
     static func saveNewEvent(event: Event, completion: (() -> Void)?,  onFailure: ((error: NSError) -> Void)?){
         do{
-            try saveEventIntoRealm(event, completion: nil, onFailure: nil)
-            try addEventToLoggedUser(event, completion: nil, onFailure: nil)
+            try saveEventIntoRealm(event, completion: nil, onFailure: { (error) in
+                onFailure?(error: error)
+            })
+            try addEventToLoggedUser(event, completion: nil,  onFailure: { (error) in
+                onFailure?(error: error)
+            })
             completion?()
         }catch{
             onFailure?(error: NSError.errorWithMessage("Error processing new event"))

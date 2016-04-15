@@ -29,8 +29,21 @@ class EventViewModel: NSObject {
     }
     
     static func getEventsForCurrentUser(dateComparison: DateComparison, completion: ((events: [Event]) -> Void)?, onFailure: ((error: NSError) -> Void)?) -> Void{
-        EventService.getEventsForCurrentUser(dateComparison, completion: { (events) in
-            completion?(events: events)
+        EventService.getEventsForCurrentUser({ (events) in
+            
+            let today = NSDate()
+            let filteredEvents: [Event]
+            
+            if dateComparison == .PastEvents {
+                filteredEvents = events.filter({ $0.date < today }).sort({ $0.date > $1.date })
+            } else if dateComparison == .UpcomingEvents{
+                filteredEvents =  events.filter({ $0.date > today }).sort({ $0.date > $1.date })
+            }else{
+                //dateComparison == .Today
+                filteredEvents =  events.filter({ $0.date == today }).sort({ $0.date > $1.date })
+            }
+
+            completion?(events: filteredEvents)
         }) { (error) in
             onFailure?(error: error)
         }

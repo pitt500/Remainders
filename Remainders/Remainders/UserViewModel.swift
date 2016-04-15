@@ -51,7 +51,13 @@ class UserViewModel: NSObject {
     static func getLoggedUserWithCompletion(completion: ((user: User)->Void)?, onFailure: ((error: NSError) -> Void)?) -> Void{
         
         try! UserService.getLoggedUserWithCompletionHandler({ (user) in
-            completion?(user: user )
+            
+            if let actualUser = user {
+                completion?(user: actualUser)
+            }else{
+                onFailure?(error:  NSError.errorWithMessage("There are not user logged on"))
+            }
+            
         }) { (error) in
             onFailure?(error: error )
         }
@@ -87,6 +93,37 @@ class UserViewModel: NSObject {
             completion?()
         }) { (error) in
             onFailure?(error: error )
+        }
+    }
+    
+    static func getUserDataFromFacebook() -> Void {
+        FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "email, name"]).startWithCompletionHandler { (connection, result, error) in
+            if error == nil{
+                let dictionary = result as! [String : String]
+                
+                UserViewModel.getUserWithEmail(dictionary["email"]!, completion: { (user) in
+                    if user != nil{
+                        UserViewModel.updateLoginState(user!, isUserLogged: true, completion: nil, onFailure: { (error) in
+                            print(error.getMessage())
+                        })
+                    }else{
+                        let newUser = User(WithName: dictionary["name"]!, email: dictionary["email"]!, tokenId: dictionary["id"]!)
+                        UserViewModel.saveUserIntoRealm(newUser,  completion: nil, onFailure: { (error) in
+                            print(error.getMessage())
+                        })
+                    }
+                    
+                    NavigationManager.goToStoryboard("Main", viewControllerId: "MainController")
+                    }, onFailure: { (error) in
+                        print(error.getMessage())
+                })
+                
+                
+                
+                
+            }else{
+                print("Error getting facebook data...")
+            }
         }
     }
 

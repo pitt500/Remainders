@@ -28,7 +28,7 @@ class EventViewController: UITableViewController {
             self.events = events
             self.tableView.reloadData()
         }) { (error) in
-            print(error.description)
+            print(error.getMessage())
         }
         
     }
@@ -51,7 +51,7 @@ class EventViewController: UITableViewController {
             detailVC.event = event
             self.navigationController?.pushViewController(detailVC, animated: true)
         }, onFailure: {(error) in
-            print(error.description)
+            print(error.getMessage())
         })
     }
 

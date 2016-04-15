@@ -11,24 +11,11 @@ import RealmSwift
 
 class EventService: NSObject {
     
-    static func getEventsForCurrentUser(dateComparison: DateComparison, completion: ((events: [Event]) -> Void)?, onFailure: ((error: NSError) -> Void)?) -> Void{
+    static func getEventsForCurrentUser(completion: ((events: [Event]) -> Void)?, onFailure: ((error: NSError) -> Void)?) -> Void{
         
         do{
             try UserService.getLoggedUserWithCompletionHandler({ (user) in
-                let today = NSDate()
-                let eventArray = Array(user.events)
-                let filteredEvents: [Event]
-                
-                if dateComparison == .PastEvents {
-                    filteredEvents = eventArray.filter({ $0.date < today }).sort({ $0.date > $1.date })
-                } else if dateComparison == .UpcomingEvents{
-                    filteredEvents =  eventArray.filter({ $0.date > today }).sort({ $0.date > $1.date })
-                }else{
-                    //dateComparison == .Today
-                    filteredEvents =  eventArray.filter({ $0.date == today }).sort({ $0.date > $1.date })
-                }
-                
-                completion?(events: filteredEvents)
+                completion?(events: Array(user.events))
             }, onFailure: { (error) in
                 onFailure?(error: error)
             })

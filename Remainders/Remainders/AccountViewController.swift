@@ -29,14 +29,14 @@ class AccountViewController: UIViewController {
             let url = NSURL(string: "https://graph.facebook.com/\(user.tokenId)/picture?type=large")!
             self.profileImageView.af_setImageWithURL(url)
         }) { (error) in
-            print(error.description)
+            print(error.getMessage())
         }
         
         
         EventViewModel.getEventsForCurrentUser(.UpcomingEvents, completion: { (events) in
             self.upcomingEventsLabel.text = String(events.count)
         }) { (error) in
-            print(error.description)
+            print(error.getMessage())
         }
         
         
@@ -54,7 +54,7 @@ class AccountViewController: UIViewController {
         UserViewModel.updateLoginState(self.user, isUserLogged: false, completion: { 
             NavigationManager.goToStoryboard("Welcome", viewControllerId: "LoginViewController")
         }) { (error) in
-            print(error.description)
+            print(error.getMessage())
         }
         
     }

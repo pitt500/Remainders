@@ -10,17 +10,11 @@ import UIKit
 import RealmSwift
 
 class UserService: NSObject {
-    static func getLoggedUserWithCompletionHandler(completion: ((user: User) ->Void)?, onFailure: ((error: NSError) -> Void)?) throws -> Void {
+    static func getLoggedUserWithCompletionHandler(completion: ((user: User?) ->Void)?, onFailure: ((error: NSError) -> Void)?) throws -> Void {
         do{
             let realm = try Realm()
             let user = realm.objects(User).filter("isLogged == true").first
-            
-            
-            if let actualUser = user {
-                completion?(user: actualUser)
-            }else{
-                onFailure?(error:  NSError.errorWithMessage("There are not user logged on"))
-            }
+            completion?(user: user)
             
         }catch{
             onFailure?(error:  NSError.errorWithMessage("Error accessing to Realm"))

@@ -60,7 +60,7 @@ class AddEventViewController: UITableViewController {
             EventViewModel.saveNewEvent(newEvent, completion: {
                 UILocalNotification.setNotificationWithEvent(newEvent)
             }, onFailure: { (error) in
-                print(error.description)
+                print(error.getMessage())
             })
             
         }else{
@@ -69,7 +69,7 @@ class AddEventViewController: UITableViewController {
                 UILocalNotification.setNotificationWithEvent(self.event!)
                 self.delegate?.editEventDetailDidUpdateEvent(self)
             }, onFailure: { (error) in
-                    print(error.description)
+                    print(error.getMessage())
             })
         }
         

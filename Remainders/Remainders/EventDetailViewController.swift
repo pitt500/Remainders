@@ -47,7 +47,7 @@ class EventDetailViewController: UIViewController, EditEventDetailDelegate {
                     UILocalNotification.cancelNotificationForEvent(self.event)
                     self.navigationController?.popToRootViewControllerAnimated(true)
                 }, onFailure: { (error) in
-                    print(error.description)
+                    print(error.getMessage())
                 })
                 
             }).show()

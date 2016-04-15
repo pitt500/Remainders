@@ -33,44 +33,10 @@ class LoginViewController: UIViewController {
             }else if result.isCancelled {
                 print("Cancelled")
             }else{
-                self.getUserDataFromFacebook()
-                
+                UserViewModel.getUserDataFromFacebook()
             }
         }
     }
-    
-    func getUserDataFromFacebook() -> Void {
-        FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "email, name"]).startWithCompletionHandler { (connection, result, error) in
-            if error == nil{
-                let dictionary = result as! [String : String]
-
-                UserViewModel.getUserWithEmail(dictionary["email"]!, completion: { (user) in
-                    if user != nil{
-                        UserViewModel.updateLoginState(user!, isUserLogged: true, completion: nil, onFailure: { (error) in
-                            print(error.description)
-                        })
-                    }else{
-                        let newUser = User(WithName: dictionary["name"]!, email: dictionary["email"]!, tokenId: dictionary["id"]!)
-                        UserViewModel.saveUserIntoRealm(newUser,  completion: nil, onFailure: { (error) in
-                            print(error.description)
-                        })
-                    }
-                    
-                    NavigationManager.goToStoryboard("Main", viewControllerId: "MainController")
-                }, onFailure: { (error) in
-                    print(error.description)
-                })
-                
-                
-                
-                
-            }else{
-                print("Error getting facebook data...")
-            }
-        }
-    }
-    
-
 
     @IBAction func loginToFacebook(sender: AnyObject) {
         self.loginButtonClicked()

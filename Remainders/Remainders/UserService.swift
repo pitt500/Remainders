@@ -22,21 +22,6 @@ class UserService: NSObject {
         
     }
     
-    static func checkIfAnyUserIsLoggedWithCompletion(completion: ((isUserLogged: Bool) -> Void)?, onFailure: ((error: NSError) -> Void)?) -> Void{
-        
-        do{
-            let realm = try Realm()
-            let user = realm.objects(User).filter("isLogged == true")
-            let isAnyLogged = (user.count == 1) ? true : false
-            completion?(isUserLogged: isAnyLogged)
-        }catch{
-            onFailure?(error:  NSError.errorWithMessage("Error checking if any user is logged on"))
-        }
-    }
-    
-    
-    
-    
     
     static func getUserWithEmail(email: String, completion: ((user: User?) -> Void)?, onFailure: ((error: NSError) -> Void)?) -> Void{
         
@@ -87,6 +72,7 @@ class UserService: NSObject {
                 user.isLogged = isUserLogged
                 realm.add(user, update: true)
             })
+            completion?()
         }catch{
             onFailure?(error: NSError.errorWithMessage("Error updating login state"))
         }

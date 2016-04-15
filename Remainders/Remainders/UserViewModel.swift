@@ -35,19 +35,6 @@ class UserViewModel: NSObject {
         Realm.Configuration.defaultConfiguration = config
     }
     
-    
-    
-    static func checkIfAnyUserIsLoggedWithCompletion(completion: ((isUserLogged: Bool) -> Void)?, onFailure: ((error: NSError) -> Void)?) -> Void{
-        
-        UserService.checkIfAnyUserIsLoggedWithCompletion({ (isUserLogged) in
-            completion?(isUserLogged: isUserLogged)
-        }) { (error) in
-            onFailure?(error: error)
-        }
-    }
-    
-    
-    
     static func getLoggedUserWithCompletion(completion: ((user: User)->Void)?, onFailure: ((error: NSError) -> Void)?) -> Void{
         
         try! UserService.getLoggedUserWithCompletionHandler({ (user) in
@@ -117,9 +104,6 @@ class UserViewModel: NSObject {
                     }, onFailure: { (error) in
                         print(error.getMessage())
                 })
-                
-                
-                
                 
             }else{
                 print("Error getting facebook data...")

@@ -26,11 +26,11 @@ class EventService: NSObject {
     }
     
     
-    static func getEventWithDate(date: NSDate, completion: ((event: Event) -> Void)?, onFailure: ((error: NSError) -> Void)?){
+    static func getEventWithId(id: String, completion: ((event: Event) -> Void)?, onFailure: ((error: NSError) -> Void)?){
     
         do{
             try UserService.getLoggedUserWithCompletionHandler({ (user) in
-                let event = user!.events.filter("date == %@",date).first!
+                let event = user!.events.filter("id == '\(id)'").first!
                 completion?(event: event)
             }, onFailure: { (error) in
                 onFailure?(error: error)

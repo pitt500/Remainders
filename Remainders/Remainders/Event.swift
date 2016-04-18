@@ -11,6 +11,7 @@ import RealmSwift
 
 
 class Event: Object {
+    dynamic var id = NSUUID().UUIDString
     dynamic var title: String = ""
     dynamic var date: NSDate = NSDate()
     dynamic var note: String = ""
@@ -21,4 +22,10 @@ class Event: Object {
         self.date = date
         self.note = note
     }
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+    
 }

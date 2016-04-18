@@ -10,20 +10,27 @@ import UIKit
 
 class EventViewController: UITableViewController {
     
-    var events: [Event]?
+    var events = [Event]()
+    var dateComparison: DateComparison = DateComparison.Today
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showEventWithDate), name: "kShowEventFromLocalNotification", object: nil)
+        guard let tabTitle: String = self.navigationController?.tabBarItem.title
+            else{ return }
+        
+        self.dateComparison = (tabTitle == "Upcoming") ? .UpcomingEvents : .PastEvents
+        
+        if self.dateComparison == .UpcomingEvents {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showEventWithId), name: "kShowEventFromLocalNotification", object: nil)
+        }
+        
+        
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let tabTitle: String = self.navigationController?.tabBarItem.title
-            else{ return }
-        
-        let dateComparison: DateComparison = (tabTitle == "Upcoming") ? .UpcomingEvents : .PastEvents
         EventViewModel.getEventsForCurrentUser(dateComparison, completion: { (events) in
             self.events = events
             self.tableView.reloadData()
@@ -39,13 +46,16 @@ class EventViewController: UITableViewController {
     }
     
     deinit{
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kShowEventFromLocalNotification", object: nil)
+        if self.dateComparison == .UpcomingEvents {
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: "kShowEventFromLocalNotification", object: nil)
+        }
     }
     
     //MARK: - NotificationCenter methods
-    func showEventWithDate(notification: NSNotification) -> Void {
-        let date = notification.object as! NSDate
-        EventViewModel.getEventWithDate(date, completion: { (event) in
+    func showEventWithId(notification: NSNotification) -> Void {
+        let id = notification.object as! String
+        EventViewModel.getEventWithId(id, completion: { (event) in
+            self.tabBarController?.selectedIndex = 0
             let mainSB = UIStoryboard.init(name: "Main", bundle: nil)
             let detailVC = mainSB.instantiateViewControllerWithIdentifier("EventDetailViewController") as! EventDetailViewController
             detailVC.event = event
@@ -64,14 +74,14 @@ class EventViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.events?.count ?? 0
+        return self.events.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: EventViewCell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as! EventViewCell
         
-        cell.configureCellWithEvent(self.events![indexPath.row])
+        cell.configureCellWithEvent(self.events[indexPath.row])
         
         return cell
     }
@@ -85,7 +95,7 @@ class EventViewController: UITableViewController {
             let detailVC = segue.destinationViewController as! EventDetailViewController
             let cell = sender as! EventViewCell
             let selectedIndexPath = self.tableView.indexPathForCell(cell)
-            detailVC.event =  self.events![(selectedIndexPath?.row)!]
+            detailVC.event =  self.events[(selectedIndexPath?.row)!]
         }
         
         

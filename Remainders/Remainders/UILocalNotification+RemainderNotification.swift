@@ -15,14 +15,17 @@ extension UILocalNotification {
         notification.alertTitle = "Remainder"
         notification.alertBody = event.title
         notification.fireDate = event.date
+        notification.userInfo = ["id": event.id]
         
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
     
     static func cancelNotificationForEvent(event: Event) -> Void {
+        
         let app: UIApplication = UIApplication.sharedApplication()
+                
         let notification = app.scheduledLocalNotifications?.filter({ (notif) -> Bool in
-            notif.fireDate == event.date && notif.alertBody == event.title
+            String(notif.userInfo!["id"]) == event.id
         }).first
         
         if notification != nil{

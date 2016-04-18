@@ -20,8 +20,8 @@ class EventViewModel: NSObject {
         }
     }
     
-    static func getEventWithDate(date: NSDate, completion: ((event: Event) -> Void)?, onFailure: ((error: NSError) -> Void)?){
-        EventService.getEventWithDate(date, completion: { (event) in
+    static func getEventWithId(id: String, completion: ((event: Event) -> Void)?, onFailure: ((error: NSError) -> Void)?){
+        EventService.getEventWithId(id, completion: { (event) in
             completion?(event: event)
         }) { (error) in
             onFailure?(error: error)

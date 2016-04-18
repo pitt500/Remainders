@@ -49,7 +49,7 @@ class AddEventViewController: UITableViewController {
             return
         }
         
-        if eventDatePicker.date < 1.minutes.later {
+        if eventDatePicker.date < 30.seconds.later {
             Alert(title: "Error", message: "Please set a future time").addAction("OK").show()
             return
         }

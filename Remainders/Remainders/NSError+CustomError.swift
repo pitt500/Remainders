@@ -17,7 +17,7 @@ extension NSError {
     }
     
     func getMessage() -> String{
-        return String(self.userInfo["message"])
+        return String(self.userInfo["message"]!)
     }
 
 }

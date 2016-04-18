@@ -100,7 +100,7 @@ class UserViewModel: NSObject {
                         })
                     }
                     
-                    NavigationManager.goToStoryboard("Main", viewControllerId: "MainController")
+                    NavigationManager.goMain()
                     }, onFailure: { (error) in
                         print(error.getMessage())
                 })

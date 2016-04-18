@@ -19,15 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        UserViewModel.setRealmSchemaWithVersion(4)
+        
+        
+        UserViewModel.setRealmSchemaWithVersion(10)
         
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))
         
-        UserViewModel.getLoggedUserWithCompletion({ (user) in
-            NavigationManager.goToStoryboard("Main", viewControllerId: "MainController")
+        UserViewModel.getLoggedUserWithCompletion({ _ in
+            NavigationManager.goMain()
         }) { (error) in
             print(error.getMessage())
-            NavigationManager.goToStoryboard("Welcome", viewControllerId: "LoginViewController")
+            NavigationManager.goLogin()
         }
         
         return true
@@ -60,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        NSNotificationCenter.defaultCenter().postNotificationName("kShowEventFromLocalNotification", object: notification.fireDate)
+        NSNotificationCenter.defaultCenter().postNotificationName("kShowEventFromLocalNotification", object: notification.userInfo!["id"])
     }
 
 

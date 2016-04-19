@@ -55,7 +55,11 @@ class EventViewController: UITableViewController {
     func showEventWithId(notification: NSNotification) -> Void {
         let id = notification.object as! String
         EventViewModel.getEventWithId(id, completion: { (event) in
-            self.tabBarController?.selectedIndex = 0
+            
+            let now = NSDate()
+            //We choose between upcoming tab or past tab (when user has selected a local notification later)
+            self.tabBarController?.selectedIndex = (now <= event.date) ? 0 : 1
+            
             let mainSB = UIStoryboard.init(name: "Main", bundle: nil)
             let detailVC = mainSB.instantiateViewControllerWithIdentifier("EventDetailViewController") as! EventDetailViewController
             detailVC.event = event
